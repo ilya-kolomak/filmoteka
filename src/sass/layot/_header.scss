@@ -49,7 +49,7 @@ nav {
 }
 
 .pages-item:not(:last-child) {
-    margin-right: 10px;
+    margin-right: 40px;
 }
 
 .pages-link {
@@ -57,7 +57,7 @@ nav {
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
-    line-height: 14px;
+    line-height: 0.86;
     color: $white;
     text-transform: uppercase;
 }
@@ -70,6 +70,7 @@ nav {
 }
 
 #search {
+    color: $white;
     width: 394px;
     background-color: transparent;
     border: none;
@@ -89,8 +90,14 @@ nav {
 
 .search-btn {
     position: absolute;
-    left: 65%;
+    left: 91%;
     background-color: transparent;
     border: none;
     padding: 6px;
+    @include tablet {
+        left: 75%;
+    }
+    @include desktop {
+        left: 65%;
+    }
 }
