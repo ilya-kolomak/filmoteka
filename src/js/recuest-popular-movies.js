@@ -1,7 +1,7 @@
 import axios from 'axios';
 axios.defaults.baseURL = 'https://api.themoviedb.org/';
 const API_KEY = '05e64fd21cd8a0d5400571b79e99a2f3';
-export class MoмiesAPi {
+export class MoviesAPi {
   #page = 1;
   #totalPages = 0;
 
