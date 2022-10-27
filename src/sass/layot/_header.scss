@@ -1,17 +1,17 @@
 .header {
     padding-top: 40px;
     padding-bottom: 92px;
-    background-image: url(../images/header-background/mob-bg-img-min.jpg);
+    background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/header-background/mob-bg-img-min.jpg);
     background-position: center;
     @include tablet {
         padding-bottom: 80px;
-        background-image: url(../images/header-background/tablet-bg-img-min.jpg);
+        background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/header-background/tablet-bg-img-min.jpg);
         background-position: center;
     }
     @include desktop {
     padding-top: 40px;
     padding-bottom: 80px;
-    background-image: url(../images/header-background/desktop-bg-img-min.jpg);
+    background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/header-background/desktop-bg-img-min.jpg);
     background-position: center;
     background-size: contain;
     }
