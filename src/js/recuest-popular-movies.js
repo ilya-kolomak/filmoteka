@@ -9,6 +9,8 @@ fetch(url)
     return response.json();
   })
   .then(data => {
+    console.log(data);
+
     // Data handling
   })
   .catch(error => {
