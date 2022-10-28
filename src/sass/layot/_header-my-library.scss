@@ -1,0 +1,117 @@
+.header-library__overlay {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url(../images/my-library/header-background-mob-x1.jpg);
+  background-position: center;
+
+  @include retina {
+    background-size: contain;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/my-library/header-background-mob-x2.jpg);
+  }
+
+  @include tablet {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/my-library/header-background-tab-x1.jpg);
+    background-position: center;
+    @include retina {
+      background-size: contain;
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/my-library/header-background-tab-x2.jpg);
+    }
+  }
+
+  @include desktop {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/my-library/header-background-desk-x1.jpg);
+    background-size: contain;
+    background-position: center;
+    @include retina {
+      background-size: contain;
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/my-library/header-background-desk-x2.jpg);
+    }
+  }
+}
+
+.header-library {
+  padding-top: 40px;
+  padding-bottom: 62px;
+  @include tablet {
+    padding-bottom: 60px;
+  }
+}
+
+.buttons-wrap {
+  text-align: center;
+}
+
+.header-library__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 128px;
+  height: 44px;
+  color: $white;
+  border: 1px solid $white;
+  border-radius: 5px;
+  background-color: transparent;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $orange;
+    border: 1px solid $orange;
+    filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+  }
+
+  @include tablet {
+    min-width: 152px;
+    &:not(:last-child) {
+      margin-right: 32px;
+    }
+  }
+
+  @include desktop {
+    min-width: 148px;
+    height: 42px;
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+}
