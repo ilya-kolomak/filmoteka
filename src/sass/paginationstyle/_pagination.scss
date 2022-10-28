@@ -3,6 +3,10 @@
   border: none !important;
 }
 
+.tui-page-btn:hover {
+  background-color: transparent !important;
+}
+
 .tui-pagination .tui-is-selected,
 .tui-pagination strong {
   width: 40px !important;
@@ -12,4 +16,8 @@
   border: none !important;
   border-radius: 10px !important;
   line-height: 2.1 !important;
+}
+
+.hiden {
+  display: none !important;
 }
