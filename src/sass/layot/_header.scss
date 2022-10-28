@@ -3,17 +3,31 @@
     padding-bottom: 92px;
     background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/header-background/mob-bg-img-min.jpg);
     background-position: center;
+
+    @include retina {
+        background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),url(../images/header-background/mob-bg-img@2x-min.jpg);
+        background-size: contain;
+    }
     @include tablet {
         padding-bottom: 80px;
         background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/header-background/tablet-bg-img-min.jpg);
         background-position: center;
+        @include retina {
+            background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),url(../images/header-background/tablet-bg-img@2x-min.jpg);
+            background-size: contain;
+        }
     }
+
     @include desktop {
     padding-top: 40px;
     padding-bottom: 80px;
     background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/header-background/desktop-bg-img-min.jpg);
     background-position: center;
     background-size: contain;
+    @include retina {
+        background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),url(../images/header-background/desktop-bg-img@2x-min.jpg);
+        background-size: contain;
+    }
     }
 }
 
