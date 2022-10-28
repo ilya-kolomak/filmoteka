@@ -8,6 +8,7 @@ function renderPaganation() {
     pagination.on('afterMove', event => {
       const currentPage = event.page;
       console.log(currentPage);
+      return currentPage;
     });
   } catch (error) {}
 }
