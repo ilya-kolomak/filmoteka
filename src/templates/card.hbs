@@ -1,0 +1,15 @@
+{{#each this}}
+ <li class="hero-item">
+  <div class="hero-thumb">
+  <img 
+  src="{{poster_path}}"
+  alt="{{title}}" loading="lazy" class="img-item " />
+  </div>
+  <div class="hero-info">
+    <p class="film-title">{{original_title}}</p>
+    <p class="film-info">{{genre}}|</p>
+    <p class="film-info">{{release_date}}</p>
+  </div>
+ </li>
+{{/each}}
+

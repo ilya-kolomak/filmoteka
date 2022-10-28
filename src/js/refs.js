@@ -1,4 +1,4 @@
 export const refs = {
-    form: document.querySelector('.js-search-form'),
-    searchBtn: document.querySelector('.js-search-btn'),
-}
+  form: document.querySelector('.js-search-form'),
+  searchBtn: document.querySelector('.js-search-btn'),
+};
