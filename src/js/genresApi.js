@@ -11,7 +11,7 @@ export default class GenresApiService {
         'https://api.themoviedb.org/3/genre/movie/list?api_key=38f6f2c88436f6a6fb5d137cfc7b2688&language=en-US'
       );
       this.page += 1;
-      // console.log(response.data);
+      console.log(response.data);
       return response.data;
     } catch (error) {}
   }
