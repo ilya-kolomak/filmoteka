@@ -1,117 +1,151 @@
 .header {
-    padding-top: 40px;
-    padding-bottom: 92px;
-    background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/header-background/mob-bg-img-min.jpg);
+  padding-top: 40px;
+  padding-bottom: 92px;
+  background-image: linear-gradient(
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url(../images/header-background/mob-bg-img-min.jpg);
+  background-position: center;
+
+  @include retina {
+    background-image: linear-gradient(
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url(../images/header-background/mob-bg-img@2x-min.jpg);
+    background-size: contain;
+  }
+  @include tablet {
+    padding-bottom: 80px;
+    background-image: linear-gradient(
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url(../images/header-background/tablet-bg-img-min.jpg);
     background-position: center;
-
     @include retina {
-        background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),url(../images/header-background/mob-bg-img@2x-min.jpg);
-        background-size: contain;
+      background-image: linear-gradient(
+          rgba(47, 48, 58, 0.4),
+          rgba(47, 48, 58, 0.4)
+        ),
+        url(../images/header-background/tablet-bg-img@2x-min.jpg);
+      background-size: contain;
     }
-    @include tablet {
-        padding-bottom: 80px;
-        background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/header-background/tablet-bg-img-min.jpg);
-        background-position: center;
-        @include retina {
-            background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),url(../images/header-background/tablet-bg-img@2x-min.jpg);
-            background-size: contain;
-        }
-    }
+  }
 
-    @include desktop {
+  @include desktop {
     padding-top: 40px;
     padding-bottom: 80px;
-    background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/header-background/desktop-bg-img-min.jpg);
+    background-image: linear-gradient(
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url(../images/header-background/desktop-bg-img-min.jpg);
     background-position: center;
     background-size: contain;
     @include retina {
-        background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),url(../images/header-background/desktop-bg-img@2x-min.jpg);
-        background-size: contain;
+      background-image: linear-gradient(
+          rgba(47, 48, 58, 0.4),
+          rgba(47, 48, 58, 0.4)
+        ),
+        url(../images/header-background/desktop-bg-img@2x-min.jpg);
+      background-size: contain;
     }
-    }
+  }
 }
 
 .logo-link {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .header-logo {
-    fill: $white;
-    margin-right: 10px;
+  fill: $white;
+  margin-right: 10px;
 }
 .logo-text {
-    display: none;
-    @include tablet {
+  display: none;
+  @include tablet {
     display: block;
     color: $white;
     font-family: 'Roboto';
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
- }
+  }
 }
 
 nav {
-    display: flex;
-    align-items: center;
-    margin-bottom: 41px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 41px;
 }
 
 .pages-list {
-    display: flex;
-    margin-left: auto;
+  display: flex;
+  margin-left: auto;
 }
 
 .pages-item:not(:last-child) {
-    margin-right: 40px;
+  margin-right: 40px;
 }
 
 .pages-link {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 0.86;
-    color: $white;
-    text-transform: uppercase;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 0.86;
+  color: $white;
+  text-transform: uppercase;
+  position: relative;
+
+  &.current::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ff001b;
+  }
 }
 
 .search-form {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #search {
-    color: $white;
-    width: 394px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 0.5px solid $white;
+  color: $white;
+  width: 394px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.5px solid $white;
 }
 
 #search::placeholder {
-    color: $white;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.14;
+  color: $white;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
 }
 
 #search:focus {
-    outline: none;
+  outline: none;
 }
 
 .search-btn {
-    position: absolute;
-    left: 91%;
-    background-color: transparent;
-    border: none;
-    padding: 6px;
-    @include tablet {
-        left: 75%;
-    }
-    @include desktop {
-        left: 65%;
-    }
+  position: absolute;
+  left: 91%;
+  background-color: transparent;
+  border: none;
+  padding: 6px;
+  @include tablet {
+    left: 75%;
+  }
+  @include desktop {
+    left: 65%;
+  }
 }
