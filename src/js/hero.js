@@ -15,15 +15,21 @@ form.addEventListener('submit', onSearch);
 
 render();
 function render() {
+  // warningField.textContent = ``;
+  // searchResField.textContent = ``;
   imageApiService.page = 1;
-  imageApiService.fetchImages().then(({ results }) => {
-    localStorage.setItem(STORAGE_KEY_RESULTS, JSON.stringify({ results }));
-    console.log(results);
-    const markup = renderMarkupCard(results);
-    console.log(markup);
-    photosContainer.insertAdjacentHTML('beforeend', markup);
-    // return results;
-  });
+  imageApiService
+    .fetchImages()
+    .then(({ results }) => {
+      console.log(results);
+      const markup = renderMarkupCard(results);
+
+      photosContainer.insertAdjacentHTML('beforeend', markup);
+      // return results;
+    })
+    .catch(err => {
+      console.log('error in function render');
+    });
 }
 
 function onSearch(e) {
@@ -35,7 +41,7 @@ function onSearch(e) {
     localStorage.setItem(STORAGE_KEY_RESULTS, JSON.stringify({ results }));
     console.log(results);
     const markup = renderMarkupCard(results);
-    console.log(markup);
+
     photosContainer.insertAdjacentHTML('beforeend', markup);
     // return results;
   });
