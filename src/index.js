@@ -46,15 +46,14 @@ function onSearch(e) {
 //   console.log(merged);
 //   // return merged;
 // }
-
+renderMarkupCard();
 function renderMarkupCard(results) {
   // addGenresToResults();
 
   return results
-    .map(({ poster_path, title, original_title, release_date }) =>
-      // genres: [{ name }],
-      {
-        return ` <li class="hero-item">
+    .map(
+      ({ poster_path, title, original_title, release_date }) =>
+        ` <li class="hero-item">
     <div class="hero-thumb">
     <img
      src="${poster_path}"
@@ -65,8 +64,7 @@ function renderMarkupCard(results) {
        <p class="film-info">${name}|</p>
       <p class="film-info">${release_date}</p>
     </div>
-   </li>`;
-      }
+   </li>`
     )
     .join('');
 }
