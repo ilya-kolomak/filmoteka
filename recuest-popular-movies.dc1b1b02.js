@@ -1,2 +1,0 @@
-("undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{}).parcelRequired7c6.register("abVdc",(function(e,o){fetch(" https://api.themoviedb.org/3/trending/movie/week?api_key=05e64fd21cd8a0d5400571b79e99a2f3").then((e=>{if(!e.ok)throw new Error(e.status);return e.json()})).then((e=>{console.log(e)})).catch((e=>{}))}));
-//# sourceMappingURL=recuest-popular-movies.dc1b1b02.js.map
