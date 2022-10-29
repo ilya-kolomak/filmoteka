@@ -4,8 +4,8 @@ import 'tui-pagination/dist/tui-pagination.css';
 const paginationContainer = document.querySelector('.tui-pagination');
 
 const options = {
-  totalItems: 100,
-  itemsPerPage: 10,
+  totalItems: 1000,
+  itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
   centerAlign: true,

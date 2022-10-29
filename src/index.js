@@ -46,7 +46,6 @@ function onSearch(e) {
 //   console.log(merged);
 //   // return merged;
 // }
-renderMarkupCard();
 function renderMarkupCard(results) {
   // addGenresToResults();
 
@@ -96,6 +95,8 @@ function renderMarkupCard(results) {
 
 //   photosContainer.insertAdjacentHTML('beforeend', markup);
 // }
+
+
 
 import('./js/recuest-popular-movies');
 import('./js/renderPagination');
