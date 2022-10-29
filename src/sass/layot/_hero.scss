@@ -4,7 +4,7 @@
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: blueviolet;
+    // background-color: blueviolet;
   
     @include mobile {
       width: 320px;
@@ -31,7 +31,7 @@
     margin: 0;
     padding-left:0;
     list-style: none;
-background-color: red;
+// background-color: red;
 @include tablet {
     display: flex;
     flex-wrap: wrap;
@@ -41,7 +41,7 @@ background-color: red;
     list-style: none;
     margin-top: 20px;
     height: 440px;
-    background-color: #fff;
+    // background-color: #fff;
     &:not(:last-child) {
         @media screen and (max-width: 767px){
                 margin-bottom: 20px;        
@@ -64,7 +64,7 @@ background-color: red;
  
     height: 398px;
     border-radius: 5px;
-    background: rgb(14, 224, 94);
+    // background: rgb(14, 224, 94);
 
     @include tablet {
         height: 455px;

@@ -19,6 +19,7 @@ function onSearch(e) {
 
   imageApiService.fetchImages().then(({ results }) => {
     localStorage.setItem(STORAGE_KEY_RESULTS, JSON.stringify({ results }));
+
     return results;
   });
 
@@ -38,7 +39,7 @@ function addGenresToResults() {
 
   let merged = { ...savedResults, ...savedGenres };
 
-  console.log(merged);
+  // console.log(merged);
   return merged;
 }
 
@@ -48,8 +49,8 @@ function renderMarkupCard(obj) {
   const markup = obj.merged
     .map(
       ({
-        results: { poster_path, title, original_title, release_date },
-        genres: { name },
+        results: [{ poster_path, title, original_title, release_date }],
+        genres: [{ name }],
       }) => {
         return ` <li class="hero-item">
     <div class="hero-thumb">
