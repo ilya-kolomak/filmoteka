@@ -38,24 +38,23 @@
 @include tablet {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    margin: -15px;
 }
 }  
 .hero-item {
     list-style: none;
     margin-top: 20px;
     height: 440px;
-    background-color: rgb(60, 205, 152);
-    border-radius: 5px;
     &:not(:last-child) {
         @media screen and (max-width: 767px){
                 margin-bottom: 20px;        
     }
 }
-    @include tablet {
-        height: 495px;
-     width: calc((100% - 2 * 36px)/2);
-     
-    margin: 16px;
+@include tablet  {
+    height: 495px;
+    flex-basis: calc((100% - 2 * 30px)/2);
+    margin: 15px;
     }
     @include desktop {
         height: 634px;
@@ -65,24 +64,22 @@
 }
 
 .hero-thumb {
- 
-    height: 398px;
     border-radius: 5px;
-    // background: rgb(14, 224, 94);
-    border: 1px solid black;
-
-    @include tablet {
-        height: 455px;
-    }
-    @include desktop {
-        height: 574px;
-      }
 }
 .img-item {
     display: block;
-    width: 100%;
-    // height: 30vh;
-    object-fit: cover;
+    // width: 100%;
+    border-radius: 5px;
+   height: 402px;
+   @include tablet {
+    height: 455px;
+    // width: 336px;
+    margin-bottom: 10px;
+}
+@include desktop {
+  height: 574px;
+}
+
 }
 .hero-info {
     margin-top: 10px;
