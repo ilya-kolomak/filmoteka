@@ -98,3 +98,7 @@ function renderMarkupCard(results) {
 
 //   photosContainer.insertAdjacentHTML('beforeend', markup);
 // }
+
+import('./js/recuest-popular-movies');
+import('./js/renderPagination');
+import('./js/modal-dreamTeam');

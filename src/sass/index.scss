@@ -2,6 +2,15 @@
 @import './mixins';
 @import './base';
 @import './variables';
+
+@import './mixins';
+@import './paginationstyle/pagination';
+
 @import './reset';
 @import './layot/header';
+
 @import './layot/hero';
+@import './modal-team';
+@import './layot/header-my-library';
+@import './layot/footer';
+

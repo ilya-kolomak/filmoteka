@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header-library header-library__overlay">
   <div class="container header-container">
     <nav>
       <a href="./index.html" class="logo-link">
@@ -12,22 +12,27 @@
           <a href="./index.html" class="pages-link">Home</a>
         </li>
         <li class="pages-item">
-          <a href="./my-library.html" class="pages-link">my library</a>
+          <a href="./my-library.html" class="pages-link">My library</a>
         </li>
       </ul>
     </nav>
-    <form class="search-form js-search-form">
-      <input
-        id="search"
-        type="text"
-        name="searchQuery"
-        placeholder="Movie search"
-      />
-      <button type="submit" class="search-btn js-search-btn">
-        <svg class="search-icon" width="12" heigh="12">
-          <use href="./images/symbol-defs.svg#icon-search"></use>
-        </svg>
+    <div class="buttons-wrap">
+      <button
+        id="watched"
+        type="submit"
+        data-key="watched"
+        class="header-library__button"
+      >
+        Watched
       </button>
-    </form>
+      <button
+        id="queue"
+        type="submit"
+        data-key="queue"
+        class="header-library__button"
+      >
+        Queue
+      </button>
+    </div>
   </div>
 </header>

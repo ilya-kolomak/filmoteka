@@ -1,0 +1,37 @@
+.tui-pagination .tui-page-btn {
+  color: black !important;
+  border: none !important;
+}
+
+.tui-page-btn:hover {
+  background-color: transparent;
+}
+
+// .tui- {
+//   @media screen and (max-width: 767px) {
+//     display: none !important;
+//   }
+// }
+
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  width: 40px !important;
+  height: 40px !important;
+  color: white !important;
+  background-color: orange !important;
+  border: none !important;
+  border-radius: 10px !important;
+  line-height: 2.1 !important;
+}
+
+.tui-pagination .tui-prev-is-ellip {
+  @media screen and (max-width: 767px) {
+    display: none !important;
+  }
+}
+
+.tui-pagination .tui-next-is-ellip {
+  @media screen and (max-width: 767px) {
+    display: none !important;
+  }
+}
