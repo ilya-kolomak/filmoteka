@@ -19,39 +19,41 @@ function onSearch(e) {
 
   imageApiService.fetchImages().then(({ results }) => {
     localStorage.setItem(STORAGE_KEY_RESULTS, JSON.stringify({ results }));
-
-    return results;
+    console.log(results);
+    const markup = renderMarkupCard(results);
+    console.log(markup);
+    photosContainer.insertAdjacentHTML('beforeend', markup);
+    // return results;
   });
 
-  genresApiService.fetchGenres().then(({ genres }) => {
-    localStorage.setItem(STORAGE_KEY_GENRES, JSON.stringify({ genres }));
-    return genres;
-  });
-
-  renderMarkupCard();
+  // genresApiService.fetchGenres().then(({ genres }) => {
+  //   localStorage.setItem(STORAGE_KEY_GENRES, JSON.stringify({ genres }));
+  //   // return genres;
+  // });
+  // const markup = renderMarkupCard(merged);
+  // console.log(markup);
+  // // renderMarkupCard();
 }
 
-function addGenresToResults() {
-  const savedResults = JSON.parse(localStorage.getItem(STORAGE_KEY_RESULTS));
-  const savedGenres = JSON.parse(localStorage.getItem(STORAGE_KEY_GENRES));
-  console.log(savedGenres);
-  console.log(savedResults);
+// function addGenresToResults() {
+//   const savedResults = JSON.parse(localStorage.getItem(STORAGE_KEY_RESULTS));
+//   const savedGenres = JSON.parse(localStorage.getItem(STORAGE_KEY_GENRES));
+//   console.log(savedGenres);
+//   console.log(savedResults);
 
-  let merged = { ...savedResults, ...savedGenres };
+//   let merged = { ...savedResults, ...savedGenres };
 
-  console.log(merged);
-  return merged;
-}
+//   console.log(merged);
+//   // return merged;
+// }
 
-function renderMarkupCard(obj) {
-  addGenresToResults();
+function renderMarkupCard(results) {
+  // addGenresToResults();
 
-  const markup = obj.merged
-    .map(
-      ({
-        results: [{ poster_path, title, original_title, release_date }],
-        genres: [{ name }],
-      }) => {
+  return results
+    .map(({ poster_path, title, original_title, release_date }) =>
+      // genres: [{ name }],
+      {
         return ` <li class="hero-item">
     <div class="hero-thumb">
     <img
@@ -60,13 +62,39 @@ function renderMarkupCard(obj) {
     </div>
     <div class="hero-info">
       <p class="film-title">${original_title}</p>
-      <p class="film-info">${name}|</p>
+       <p class="film-info">${name}|</p>
       <p class="film-info">${release_date}</p>
     </div>
    </li>`;
       }
     )
     .join('');
-
-  photosContainer.insertAdjacentHTML('beforeend', markup);
 }
+
+// function renderMarkupCard(merged) {
+//   // addGenresToResults();
+
+//   return merged
+//     .map(
+//       ({
+//         results: { poster_path, title, original_title, release_date },
+//         genres: { name },
+//       }) => {
+//         return ` <li class="hero-item">
+//     <div class="hero-thumb">
+//     <img
+//      src="${poster_path}"
+//     alt="${title}" loading="lazy" class="img-item" />
+//     </div>
+//     <div class="hero-info">
+//       <p class="film-title">${original_title}</p>
+//       <p class="film-info">${name}|</p>
+//       <p class="film-info">${release_date}</p>
+//     </div>
+//    </li>`;
+//       }
+//     )
+//     .join('');
+
+//   photosContainer.insertAdjacentHTML('beforeend', markup);
+// }

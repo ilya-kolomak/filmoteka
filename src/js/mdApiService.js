@@ -11,7 +11,7 @@ export default class ImageApiService {
         'https://api.themoviedb.org/3/trending/movie/week?api_key=38f6f2c88436f6a6fb5d137cfc7b2688'
       );
       this.page += 1;
-
+      // console.log(response.data);
       return response.data;
     } catch (error) {}
   }
