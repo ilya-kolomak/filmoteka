@@ -3,20 +3,13 @@ import axios from 'axios';
 export default class GenresApiService {
   constructor() {
     this.searchQuery = '';
-    this.page = 1;
+    this.page = 2;
   }
   async fetchGenres() {
     try {
       const response = await axios.get(
         'https://api.themoviedb.org/3/genre/movie/list?api_key=38f6f2c88436f6a6fb5d137cfc7b2688&language=en-US'
       );
-<<<<<<< HEAD
-      // this.page += 1;
-      console.log(response);
-=======
-      this.page += 1;
-      console.log(response.data);
->>>>>>> 984e72a8f85b5ae866d0657cacde47ec13952e67
       return response.data;
     } catch (error) {}
   }

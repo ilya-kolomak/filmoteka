@@ -14,10 +14,10 @@ form.addEventListener('submit', onSearch);
 // const markup = renderMarkupCard(results);
 
 render();
-function render() {
+export default function render() {
   // warningField.textContent = ``;
   // searchResField.textContent = ``;
-  imageApiService.page = 1;
+  // imageApiService.page = 1;
   imageApiService
     .fetchImages()
     .then(({ results }) => {
