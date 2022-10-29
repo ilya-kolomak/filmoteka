@@ -8,10 +8,9 @@ export default class ImageApiService {
   async fetchImages() {
     try {
       const response = await axios.get(
-        'https://api.themoviedb.org/3/trending/movie/week?api_key=38f6f2c88436f6a6fb5d137cfc7b2688'
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=38f6f2c88436f6a6fb5d137cfc7b2688&page=${this.page}`
       );
-      this.page += 1;
-      // console.log(response.data);
+      console.log(response.data);
       return response.data;
     } catch (error) {}
   }
@@ -21,8 +20,7 @@ export default class ImageApiService {
       const response = await axios.get(
         'https://api.themoviedb.org/3/genre/movie/list?api_key=38f6f2c88436f6a6fb5d137cfc7b2688&language=en-US'
       );
-      console.log(response.data);
-      // return response.genres;
+      return response.genres;
     } catch (error) {}
   }
 

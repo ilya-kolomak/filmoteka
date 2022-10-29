@@ -1,27 +1,33 @@
 import createPagination from './pagination';
-import { MoviesApi } from './recuest-popular-movies';
+import ImageApiService from './mdApiService';
+import render from './hero';
+
+const moviesList = new ImageApiService();
+console.log(moviesList);
 
 renderPaganation();
-localPagination();
+// localPagination();
 
-const data = new MoviesApi();
-console.log(data);
-
-function renderPaganation() {
+async function renderPaganation() {
   try {
+    const movies = await moviesList.fetchImages();
     const pagination = createPagination();
+    pagination.movePageTo(movies.page);
     pagination.on('afterMove', event => {
       const currentPage = event.page;
-      localStorage.setItem('pagination', currentPage);
+      movies.page = currentPage;
+      render(currentPage);
+
+      // localStorage.setItem('pagination', currentPage);
       console.log(currentPage);
-      return currentPage;
+      console.log(movies.page);
     });
   } catch (error) {}
 }
 
-function localPagination() {
-  const savePagination = localStorage.getItem('pagination');
-  if (savePagination) {
-    console.log(savePagination);
-  }
-}
+// function localPagination() {
+//   const savePagination = localStorage.getItem('pagination');
+//   if (savePagination) {
+//     console.log(savePagination);
+//   }
+// }
