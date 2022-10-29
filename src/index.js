@@ -1,6 +1,7 @@
 import ImageApiService from './js/mdApiService';
 import GenresApiService from './js/genresApi';
 
+
 const STORAGE_KEY_GENRES = `genres`;
 const STORAGE_KEY_RESULTS = `results`;
 let photosContainer = document.querySelector('.js-photos-container');
