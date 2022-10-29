@@ -1,0 +1,2 @@
+var e=("undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{}).parcelRequired7c6;e.register("abVdc",(function(t,i){var n,a,o,d;n=t.exports,a="MoviesApi",o=function(){return f},Object.defineProperty(n,a,{get:o,set:d,enumerable:!0,configurable:!0});var r=e("2shzp");class f{async getMovies(){const{data:e}=await r.default.get(" https://api.themoviedb.org/3/trending/movie/week?api_key=05e64fd21cd8a0d5400571b79e99a2f3");return e}}}));
+//# sourceMappingURL=recuest-popular-movies.8469c583.js.map
