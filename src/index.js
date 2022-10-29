@@ -39,7 +39,7 @@ function addGenresToResults() {
 
   let merged = { ...savedResults, ...savedGenres };
 
-  // console.log(merged);
+  console.log(merged);
   return merged;
 }
 
