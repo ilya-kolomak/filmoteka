@@ -1,7 +1,11 @@
 import createPagination from './pagination';
+import { MoviesApi } from './recuest-popular-movies';
 
 renderPaganation();
 localPagination();
+
+const data = new MoviesApi();
+console.log(data);
 
 function renderPaganation() {
   try {
