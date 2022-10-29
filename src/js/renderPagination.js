@@ -1,12 +1,22 @@
 import createPagination from './pagination';
 import { MoviesApi } from './recuest-popular-movies';
+<<<<<<< HEAD
 
 const data = new MoviesApi();
+=======
+>>>>>>> 884446346d1d359c150d0f6d3e0cca7e2e695e77
 
 renderPaganation();
 localPagination();
 
+<<<<<<< HEAD
 async function renderPaganation() {
+=======
+const data = new MoviesApi();
+console.log(data);
+
+function renderPaganation() {
+>>>>>>> 884446346d1d359c150d0f6d3e0cca7e2e695e77
   try {
     const movies = await data.getMovies();
     console.log(movies.page);
