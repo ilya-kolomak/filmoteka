@@ -17,6 +17,15 @@ export default class ImageApiService {
     }
   }
 
+  async fetchImagesByQuery() {
+    try {
+      const respons = await axios.get(
+        `https://api.themoviedb.org/3/search/movie?api_key=38f6f2c88436f6a6fb5d137cfc7b2688&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`
+      );
+      return respons.data;
+    } catch(error) {}
+  }
+
   async fetchGenres() {
     try {
       const response = await axios.get(
