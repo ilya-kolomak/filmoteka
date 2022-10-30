@@ -1,0 +1,2 @@
+("undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{}).parcelRequired7c6.register("475fx",(function(e,n){var i,o=document.querySelector(".btn-up");window.addEventListener("scroll",(i=o,function(e){pageYOffset<document.documentElement.clientHeight?i.classList.add("visuallyhidden"):i.classList.remove("visuallyhidden")})),o.addEventListener("click",(function(e){window.scrollTo({top:0,behavior:"smooth"})}))}));
+//# sourceMappingURL=btn-up.84878d8d.js.map
