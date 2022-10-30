@@ -46,14 +46,14 @@ export default function render() {
 //     console.log(results);
 //     const markup = renderMarkupCard(results);
 
-  imageApiService.fetchImages().then(({ results }) => {
-    localStorage.setItem(STORAGE_KEY_RESULTS, JSON.stringify({ results }));
-    const markup = renderMarkupCard(results);
+// imageApiService.fetchImages().then(({ results }) => {
+//   localStorage.setItem(STORAGE_KEY_RESULTS, JSON.stringify({ results }));
+//   const markup = renderMarkupCard(results);
 
 
-//     photosContainer.insertAdjacentHTML('beforeend', markup);
-//     // return results;
-//   });
+  //     photosContainer.insertAdjacentHTML('beforeend', markup);
+  //     // return results;
+  //   });
 
   // genresApiService.fetchGenres().then(({ genres }) => {
   //   localStorage.setItem(STORAGE_KEY_GENRES, JSON.stringify({ genres }));
@@ -62,25 +62,25 @@ export default function render() {
   // const markup = renderMarkupCard(merged);
   // console.log(markup);
   // // renderMarkupCard();
-// }
+  // }
 
-// function addGenresToResults() {
-//   const savedResults = JSON.parse(localStorage.getItem(STORAGE_KEY_RESULTS));
-//   const savedGenres = JSON.parse(localStorage.getItem(STORAGE_KEY_GENRES));
-//   console.log(savedGenres);
-//   console.log(savedResults);
+  // function addGenresToResults() {
+  //   const savedResults = JSON.parse(localStorage.getItem(STORAGE_KEY_RESULTS));
+  //   const savedGenres = JSON.parse(localStorage.getItem(STORAGE_KEY_GENRES));
+  //   console.log(savedGenres);
+  //   console.log(savedResults);
 
-//   let merged = { ...savedResults, ...savedGenres };
+  //   let merged = { ...savedResults, ...savedGenres };
 
-//   console.log(merged);
-//   // return merged;
-// }
+  //   console.log(merged);
+  //   // return merged;
+  // }
 
-export default function renderMarkupCard(results) {
-  // addGenresToResults(); 
+  export default function renderMarkupCard(results) {
+    addGenresToResults();
 
-  return results
-    .map(({ poster_path, title, original_title, release_date, id }) =>
+    return results
+      .map(({ poster_path, title, original_title, release_date, id }) =>
       // genres: [{ name }],
       {
         return ` <li class="hero-item" data-id="${id}">
@@ -96,9 +96,9 @@ export default function renderMarkupCard(results) {
     </div>
    </li>`;
       }
-    )
-    .join('');
-}
+      )
+      .join('');
+  }
 
 // function renderMarkupCard(merged) {
 //   // addGenresToResults();
