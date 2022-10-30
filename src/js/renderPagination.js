@@ -3,13 +3,12 @@ import ImageApiService from './mdApiService';
 import renderMarkupCard from './hero';
 
 const moviesList = new ImageApiService();
-console.log(moviesList);
 const photosContainer = document.querySelector('.js-photos-container');
-window.addEventListener('load', renderPaganation);
+window.addEventListener('load', renderPagination);
 
 // localPagination();
 
-async function renderPaganation() {
+async function renderPagination() {
   try {
     rednerCard();
     const pagination = createPagination();
@@ -25,11 +24,10 @@ async function rednerCard() {
   clearPage();
   try {
     const { results } = await moviesList.fetchImages();
-    console.log(results);
     const markup = renderMarkupCard(results);
     photosContainer.insertAdjacentHTML('beforeend', markup);
   } catch (error) {
-    clearPage();
+    console.log(error)
   }
 }
 
