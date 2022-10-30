@@ -4,5 +4,3 @@ import('./js/modal-dreamTeam');
 
 import('./js/hero');
 import('./js/btn-up');
-
-
