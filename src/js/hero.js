@@ -9,31 +9,32 @@ let merged = {};
 const form = document.querySelector('.js-search-form');
 const searchBtn = document.querySelector('.js-search-btn');
 const imageApiService = new ImageApiService();
-const genresApiService = new GenresApiService();
 // form.addEventListener('submit', onSearch);
 // const markup = renderMarkupCard(results);
 
-render();
-
-export default function render() {
-  // warningField.textContent = ``;
-  // searchResField.textContent = ``;
-  // imageApiService.page = 1;
-  imageApiService
-    .fetchImages()
-    .then(({ results }) => {
-      getSelectedMovie(photosContainer, results)
 
 
-      const markup = renderMarkupCard(results);
-// console.log(markup);
-      photosContainer.insertAdjacentHTML('beforeend', markup);
-      // return results;
-    })
-    .catch(err => {
-      console.log('error in function render');
-    });
-}
+// render();
+
+// export default function render() {
+//   // warningField.textContent = ``;
+//   // searchResField.textContent = ``;
+//   // imageApiService.page = 1;
+//   imageApiService
+//     .fetchImages()
+//     .then(({ results }) => {
+//       getSelectedMovie(photosContainer, results)
+
+
+//       const markup = renderMarkupCard(results);
+// // console.log(markup);
+//       photosContainer.insertAdjacentHTML('beforeend', markup);
+//       // return results;
+//     })
+//     .catch(err => {
+//       console.log('error in function render');
+//     });
+// }
 
 // function onSearch(e) {
 //   e.preventDefault();
@@ -77,7 +78,7 @@ export default function render() {
   // }
 
   export default function renderMarkupCard(results) {
-    addGenresToResults();
+    imageApiService.fetchImages();
 
     return results
       .map(({ poster_path, title, original_title, release_date, id }) =>
