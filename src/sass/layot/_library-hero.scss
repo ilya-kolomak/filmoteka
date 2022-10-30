@@ -1,0 +1,50 @@
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+  .library-section {
+    height: 100vh;
+  }
+  
+.nothing-watch {
+
+  padding: 15px 85px 110px;
+
+  display: block;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  text-transform: uppercase;
+  text-align: center;
+
+  background-image: url("../images/bg-img-library/movie-theater-2502213_640.jpg");
+  background-size:cover;
+
+    @media screen and (min-width: 768px){    
+    
+      padding: 38px 214px 275px;
+
+      font-size: 30px;
+
+      background-image: url("../images/bg-img-library/movie-theater-2502213_1280.jpg");
+      background-size:cover;
+    };
+
+    @media screen and (min-width: 1200px){      
+      
+      padding: 65px 366px 476px;
+
+      font-size: 52px;
+}
+}
