@@ -1,27 +1,44 @@
 import createPagination from './pagination';
-import { MoviesApi } from './recuest-popular-movies';
+import ImageApiService from './mdApiService';
+import renderMarkupCard from './hero';
 
-renderPaganation();
-localPagination();
+const moviesList = new ImageApiService();
+console.log(moviesList);
+const photosContainer = document.querySelector('.js-photos-container');
+window.addEventListener('load', renderPaganation);
 
-const data = new MoviesApi();
-console.log(data);
+// localPagination();
 
-function renderPaganation() {
+async function renderPaganation() {
   try {
     const pagination = createPagination();
     pagination.on('afterMove', event => {
       const currentPage = event.page;
-      localStorage.setItem('pagination', currentPage);
-      console.log(currentPage);
-      return currentPage;
+      moviesList.page = currentPage;
+      rednerCard(currentPage);
     });
   } catch (error) {}
 }
 
-function localPagination() {
-  const savePagination = localStorage.getItem('pagination');
-  if (savePagination) {
-    console.log(savePagination);
+async function rednerCard() {
+  clearPage();
+  try {
+    const { results } = await moviesList.fetchImages();
+    console.log(results);
+    const markup = renderMarkupCard(results);
+    photosContainer.insertAdjacentHTML('beforeend', markup);
+  } catch (error) {
+    clearPage();
   }
 }
+
+function clearPage() {
+  photosContainer.innerHTML = '';
+}
+
+// function localPagination() {
+//   const savePagination = localStorage.getItem('pagination');
+//   if (savePagination) {
+//     console.log(savePagination);
+//   }
+// }
