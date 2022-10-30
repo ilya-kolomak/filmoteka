@@ -67,7 +67,7 @@ function onSearch(e) {
 //   // return merged;
 // }
 
-function renderMarkupCard(results) {
+export default function renderMarkupCard(results) {
   // addGenresToResults();
 
   return results
