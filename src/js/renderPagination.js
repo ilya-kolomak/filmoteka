@@ -11,7 +11,6 @@ window.addEventListener('load', renderPaganation);
 
 async function renderPaganation() {
   try {
-    rednerCard();
     const pagination = createPagination();
     pagination.on('afterMove', event => {
       const currentPage = event.page;
