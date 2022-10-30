@@ -1,2 +1,0 @@
-("undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{}).parcelRequired7c6.register("6gB84",(function(e,n){const o=document.querySelector(".btn-up");var i;window.addEventListener("scroll",(i=o,function(e){pageYOffset<document.documentElement.clientHeight?i.classList.add("visuallyhidden"):i.classList.remove("visuallyhidden")})),o.addEventListener("click",(function(e){window.scrollTo({top:0,behavior:"smooth"})}))}));
-//# sourceMappingURL=btn-up.83887968.js.map
