@@ -1,7 +1,7 @@
-// .hero-section {
-//   background-color: cadetblue;
-//   height: 100vh;
-// }
+.hero-section {
+  background-color: rgb(6, 54, 54);
+  // height: 100vh;
+}
 .hero-container {
     width: 100%;
     margin: 0 auto;
@@ -23,7 +23,7 @@
   
     @media screen and (min-width: 1200px) {
         padding-top: 52px;  
-      width: 1280px;
+      width: 1200px;
       padding-left: 24px;
       padding-right: 24px;;
     }
@@ -46,6 +46,7 @@
     list-style: none;
     margin-top: 20px;
     height: 440px;
+    background-color: rgb(12, 97, 97);
     &:not(:last-child) {
         @media screen and (max-width: 767px){
                 margin-bottom: 20px;        
@@ -62,10 +63,29 @@
         margin: 8px;
       }
 }
+.hero-item:hover {
+  // @keyframes spin {
+  //   from {transform: translate(-50%, -50%) rotate(0);}
+  //   to   {transform: translate(-50%, -50%) rotate(360deg);}
+  // }
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background:  linear-gradient(to right, #ff0000 0%, #1000ff 100%) border-box;
+    animation: spin 5s linear infinite;
+    cursor: pointer;
+    
+}
+// .hero-item:focus {
+//   border-radius: 5px;
+//   border: 2px solid transparent;
+//   background:  linear-gradient(to right, #ff0000 0%, #1000ff 100%) border-box;
+//   animation: spin 5s linear infinite;
+//   cursor: pointer;
+// }
 
 .hero-thumb {
   width: 100%;
-    border-radius: 5px;
+   
 }
 .img-item {
     display: block;
@@ -75,7 +95,7 @@
    @media screen and (min-width: 768px) {
     height: 455px;
     // width: 336px;
-    margin-bottom: 10px;
+   
 }
 @media screen and (min-width: 1200px) {
   height: 574px;
@@ -83,7 +103,7 @@
 
 }
 .hero-info {
-    margin-top: 10px;
+    margin-top: 5px;
     @media screen and (min-width: 768px) {
         margin-top: 8px;
     }
@@ -93,6 +113,7 @@
 }
 .film-title {
     font-weight: 500;
+    color: #8abdf0;
 font-size: 12px;
 line-height: 16px;
 @media screen and (min-width: 1200px) {
@@ -105,7 +126,7 @@ line-height: 24px;
     font-weight: 500;
 font-size: 12px;
 line-height: 14px;
-color: #FF6B08;
+color: #f3b909;
 @media screen and (min-width: 1200px) {
     font-size: 20px;
 line-height: 24px;
