@@ -1,5 +1,9 @@
 import { refs } from './refs';
 import createPagination from './pagination';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import * as basicLightbox from 'basiclightbox';
+import '../../node_modules/basiclightbox/src/styles/main.scss';
 
 try {
   refs.btnWatched.addEventListener('click', onBtnWatchedClick);
