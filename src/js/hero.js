@@ -10,7 +10,7 @@ const searchBtn = document.querySelector('.js-search-btn');
 
 const imageApiService = new ImageApiService();
 const genresApiService = new GenresApiService();
-form.addEventListener('submit', onSearch);
+// form.addEventListener('submit', onSearch);
 // const markup = renderMarkupCard(results);
 
 render();
@@ -32,19 +32,19 @@ export default function render() {
     });
 }
 
-function onSearch(e) {
-  e.preventDefault();
+// function onSearch(e) {
+//   e.preventDefault();
 
-  imageApiService.query = e.currentTarget.elements.query;
+//   imageApiService.query = e.currentTarget.elements.query;
 
-  imageApiService.fetchImages().then(({ results }) => {
-    localStorage.setItem(STORAGE_KEY_RESULTS, JSON.stringify({ results }));
-    console.log(results);
-    const markup = renderMarkupCard(results);
+//   imageApiService.fetchImages().then(({ results }) => {
+//     localStorage.setItem(STORAGE_KEY_RESULTS, JSON.stringify({ results }));
+//     console.log(results);
+//     const markup = renderMarkupCard(results);
 
-    photosContainer.insertAdjacentHTML('beforeend', markup);
-    // return results;
-  });
+//     photosContainer.insertAdjacentHTML('beforeend', markup);
+//     // return results;
+//   });
 
   // genresApiService.fetchGenres().then(({ genres }) => {
   //   localStorage.setItem(STORAGE_KEY_GENRES, JSON.stringify({ genres }));
@@ -53,7 +53,7 @@ function onSearch(e) {
   // const markup = renderMarkupCard(merged);
   // console.log(markup);
   // // renderMarkupCard();
-}
+// }
 
 // function addGenresToResults() {
 //   const savedResults = JSON.parse(localStorage.getItem(STORAGE_KEY_RESULTS));
