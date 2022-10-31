@@ -31,6 +31,7 @@ export default class ImageApiService {
       const response = await axios.get(
         `https://${BASE_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`
       );
+      console.log(response.genres);
       return response.genres;
     } catch (error) {}
   }

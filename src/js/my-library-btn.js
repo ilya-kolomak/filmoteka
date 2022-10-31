@@ -15,7 +15,7 @@ try {
 
 export let currentLibrary = 'watched';
 try {
-  createPagination(`${currentLibrary}`);
+  // createPagination(`${currentLibrary}`);
 } catch {
   console.log(error);
 }
@@ -33,11 +33,16 @@ function onBtnWatchedClick(e) {
 
 function onBtnQueueClick(e) {
   e.preventDefault();
+
+  currentLibrary = 'queue';
+  // createPagination(`${currentLibrary}`);
+
   // currentLibrary = 'queue';
   // createPagination(`${currentLibrary}`);
   getQueueFilms();
 
   refs.btnWatched.classList.remove('header-library__button--current');
+
 
   refs.btnQueue.classList.add('header-library__button--current');
 }
