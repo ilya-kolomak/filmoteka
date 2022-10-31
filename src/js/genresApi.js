@@ -3,7 +3,7 @@ import axios from 'axios';
 export default class GenresApiService {
   constructor() {
     this.searchQuery = '';
-    this.page = 2;
+    this.page = 1;
   }
   async fetchGenres() {
     try {
