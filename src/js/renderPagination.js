@@ -4,6 +4,7 @@ import renderMarkupCard from './hero';
 import { refs } from './refs';
 
 const moviesList = new ImageApiService();
+moviesList.fetchGenres();
 
 window.addEventListener('load', renderPagination);
 localPagination();
