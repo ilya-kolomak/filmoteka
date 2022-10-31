@@ -27,7 +27,7 @@ async function rednerCard() {
     const markup = renderMarkupCard(results);
     photosContainer.insertAdjacentHTML('beforeend', markup);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
