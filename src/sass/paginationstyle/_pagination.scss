@@ -4,7 +4,7 @@
 }
 
 .tui-page-btn:hover {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 // .tui- {
@@ -31,6 +31,13 @@
 }
 
 .tui-pagination .tui-next-is-ellip {
+  @media screen and (max-width: 767px) {
+    display: none !important;
+  }
+}
+
+.tui-ico-last,
+.tui-ico-first {
   @media screen and (max-width: 767px) {
     display: none !important;
   }
