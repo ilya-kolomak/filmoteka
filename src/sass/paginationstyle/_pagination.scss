@@ -4,7 +4,7 @@
 }
 
 .tui-page-btn:hover {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 // .tui- {
@@ -35,3 +35,10 @@
     display: none !important;
   }
 }
+
+// .tui-page-btn.tui-,
+// span.tui-page-btn.tui-is-disabled.tui-first {
+//   @media screen and (max-width: 767px) {
+//     display: none !important;
+//   }
+// }

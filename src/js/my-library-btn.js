@@ -14,7 +14,7 @@ try {
 // createPagination('watched');
 export let currentLibrary = 'watched';
 try {
-  createPagination(`${currentLibrary}`);
+  // createPagination(`${currentLibrary}`);
 } catch {
   // console.log('Немає даних');
 }
@@ -33,7 +33,7 @@ function onBtnWatchedClick(e) {
 function onBtnQueueClick(e) {
   e.preventDefault();
   currentLibrary = 'queue';
-  createPagination(`${currentLibrary}`);
+  // createPagination(`${currentLibrary}`);
 
   refs.btnQueue.style.backgroundColor = '#ff6b08';
   refs.btnQueue.style.borderColor = '#FF6B02';
