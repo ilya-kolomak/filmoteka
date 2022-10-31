@@ -1,5 +1,6 @@
 import axios from 'axios';
-
+const API_KEY = '38f6f2c88436f6a6fb5d137cfc7b2688';
+const BASE_URL = 'api.themoviedb.org/3/';
 export default class ImageApiService {
   constructor() {
     this.searchQuery = '';
@@ -8,7 +9,7 @@ export default class ImageApiService {
   async fetchImages() {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=38f6f2c88436f6a6fb5d137cfc7b2688&page=${this.page}`
+        `https://${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${this.page}`
       );
       return response.data;
     } catch (error) {
@@ -19,33 +20,27 @@ export default class ImageApiService {
   async fetchImagesByQuery() {
     try {
       const respons = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=38f6f2c88436f6a6fb5d137cfc7b2688&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`
+        `https:/${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`
       );
       return respons.data;
-    } catch(error) {}
+    } catch (error) {}
   }
 
   async fetchGenres() {
     try {
       const response = await axios.get(
-        'https://api.themoviedb.org/3/genre/movie/list?api_key=38f6f2c88436f6a6fb5d137cfc7b2688&language=en-US'
+        `https://${BASE_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`
       );
       return response.genres;
     } catch (error) {}
   }
-
-  insertGenresToMovieObj() {
-    return this.fetchImages().then(data => {
-      return this.fetchGenres().then(genresList => {
-        return data.map(movie => ({
-          ...movie,
-          release_date: movie.release_date.split('-')[0],
-          genres: movie.genre_ids
-            .map(id => genresList.filter(el => el.id === id))
-            .flat(),
-        }));
-      });
-    });
+  async fetchVideo(id) {
+    try {
+      const response = await axios.get(
+        `https://${BASE_URL}movie/${id}/videos?api_key=${API_KEY}&language=en-US`
+      );
+      return response.genres;
+    } catch (error) {}
   }
 
   resetPage() {
@@ -59,87 +54,3 @@ export default class ImageApiService {
     this.searchQuery = newQuery;
   }
 }
-
-// const BASE_URL = `https://api.themoviedb.org/3`;
-// const KEY = `d91911ebb88751cf9e5c4b8fdf4412c9`;
-// export default class NewApiService {
-//   constructor() {
-//     this.searchQuery = '';
-//     this.page = 1;
-//   }
-//   fetchPopularArticles() {
-//     const url = `${BASE_URL}/movie/popular?api_key=${KEY}&language=en-US&page=${this.page}`;
-//     return fetch(url)
-//       .then(response => response.json())
-//       .then(({ results }) => {
-//         return results;
-//       });
-//   }
-//   fetchSearchArticles() {
-//     const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
-//     return fetch(url)
-//       .then(response => response.json())
-//       .then(({ results }) => {
-//         return results;
-//       });
-//   }
-//   fetchPopularArticlesPages() {
-//     const url = `${BASE_URL}/movie/popular?api_key=${KEY}&language=en-US&page=${this.page}`;
-//     return fetch(url).then(response => response.json());
-//   }
-//   fetchSearchArticlesPages() {
-//     const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
-//     return fetch(url).then(response => response.json());
-//   }
-//   fetchGenres() {
-//     const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}`;
-//     return fetch(url)
-//       .then(response => response.json())
-//       .then(data => {
-//         return data.genres;
-//       });
-//   }
-//   insertGenresToMovieObj() {
-//     return this.fetchPopularArticles().then(data => {
-//       return this.fetchGenres().then(genresList => {
-//         return data.map(movie => ({
-//           ...movie,
-//           release_date: movie.release_date.split('-')[0],
-//           genres: movie.genre_ids
-//             .map(id => genresList.filter(el => el.id === id))
-//             .flat(),
-//         }));
-//       });
-//     });
-//   }
-//   insertGenresToSearchObj() {
-//     return this.fetchSearchArticles().then(data => {
-//       return this.fetchGenres().then(genresList => {
-//         let release_date;
-//         return data.map(movie => ({
-//           ...movie,
-//           release_date: movie.release_date
-//             ? movie.release_date.split('-')[0]
-//             : 'n/a',
-//           genres: movie.genre_ids
-//             ? movie.genre_ids
-//                 .map(id => genresList.filter(el => el.id === id))
-//                 .flat()
-//             : 'n/a',
-//         }));
-//       });
-//     });
-//   }
-//   get query() {
-//     return this.searchQuery;
-//   }
-//   set query(newQuery) {
-//     this.searchQuery = newQuery;
-//   }
-//   get pageNum() {
-//     return this.page;
-//   }
-//   set pageNum(newPage) {
-//     this.page = newPage;
-//   }
-// }
