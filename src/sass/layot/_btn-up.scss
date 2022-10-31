@@ -11,7 +11,7 @@
 .btn-up {
     position: fixed;
     bottom: 35vh;
-    right: 1vw;
+    right: 25vw;
     z-index: 1000;
     width: 50px;
     height: 50px;
@@ -19,20 +19,20 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: #2ee653;
-    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
-    color: #ffffff;
+    border: none;
+    background: #f3b909;
     cursor: pointer;
 }
 
 .btn-up:hover {
-    background-color: #8abdf0;
+    background-color: #ffffff;
     transition: all 0.3s;
 }
+
 
 .btn-up-images {
     border: none;
     height:100%;
     width: 100%;
-    stroke: aqua;
+    fill: rgb(0, 0, 0);
 }
