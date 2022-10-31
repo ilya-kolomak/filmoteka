@@ -1,8 +1,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import ImageApiService from './mdApiService';
-
-const moviesList = new ImageApiService();
+// import ImageApiService from './mdApiService';
+import sprite from '../images/arrow.svg';
 
 const paginationContainer = document.querySelector('.tui-pagination');
 
@@ -10,7 +9,7 @@ const options = {
   totalItems: 1000,
   itemsPerPage: 20,
   visiblePages: 5,
-  page: Number(moviesList.page),
+  page: 1,
   centerAlign: true,
   firstItemClassName: 'tui-first-child',
   lastItemClassName: 'tui-last-child',
