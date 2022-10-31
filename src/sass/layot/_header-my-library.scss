@@ -6,9 +6,10 @@
     ),
     url(../images/my-library/header-background-mob-x1.jpg);
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @include retina {
-    background-size: contain;
     background-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
@@ -24,9 +25,7 @@
         rgba(0, 0, 0, 0.56)
       ),
       url(../images/my-library/header-background-tab-x1.jpg);
-    background-position: center;
     @include retina {
-      background-size: contain;
       background-image: linear-gradient(
           to right,
           rgba(0, 0, 0, 0.56),
@@ -43,10 +42,7 @@
         rgba(0, 0, 0, 0.56)
       ),
       url(../images/my-library/header-background-desk-x1.jpg);
-    background-size: contain;
-    background-position: center;
     @include retina {
-      background-size: contain;
       background-image: linear-gradient(
           to right,
           rgba(0, 0, 0, 0.56),
