@@ -6,7 +6,6 @@ import { refs } from './refs';
 const moviesList = new ImageApiService();
 
 window.addEventListener('load', renderPagination);
-
 localPagination();
 
 async function renderPagination() {
@@ -41,7 +40,8 @@ function clearPage() {
 function localPagination() {
   const savePagination = localStorage.getItem('pagination');
   if (savePagination) {
-    console.log(savePagination);
     moviesList.page = savePagination;
+    const pagination = createPagination();
+    pagination.movePageTo(savePagination);
   }
 }
