@@ -69,8 +69,6 @@ export function getWatchedFilms() {
       return;
     }
 
-    // const renderWatched = makingMarkup(parsedFilms);
-    // insertFilmsMarkupToLibrary(renderWatched);
     createPagination(`${currentLibrary}`);
   } catch (error) {
     console.log(error);
@@ -150,8 +148,8 @@ export function deleteQueue(element, style) {
 //   Фунуція для очищення попередніх результатів рендеру
 export function clearLibrary() {
   try {
-    refs.libraryCardsContainer.innerHTML = '';
+    refs.photosContainer.innerHTML = '';
   } catch {
-    // console.log('Данных еще нет');
+    // console.log('немає даних');
   }
 }
