@@ -20,6 +20,7 @@ try {
 }
 
 function onBtnWatchedClick(e) {
+  e.preventDefault();
   currentLibrary = 'watched';
   createPagination(`${currentLibrary}`);
 
@@ -30,6 +31,7 @@ function onBtnWatchedClick(e) {
 }
 
 function onBtnQueueClick(e) {
+  e.preventDefault();
   currentLibrary = 'queue';
   createPagination(`${currentLibrary}`);
 
