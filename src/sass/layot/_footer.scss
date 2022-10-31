@@ -7,12 +7,14 @@
     font-size: 16px;
     line-height: 1.19;
 }
+
 .footer__icon_logo {
     animation: heartbeat 1250ms cubic-bezier(.25, .1, .25, 1) infinite;
-  }
-  .animate{
+}
+
+.animate {
     animation: beatheart 1250ms cubic-bezier(.25, .1, .25, 1) infinite;
-  }
+}
 
 .footer a {
     text-decoration: underline;
@@ -20,37 +22,37 @@
 }
 
 @keyframes heartbeat {
-  0% {
-          transform: scale(1);
-      }
-  
-      10% {
-          transform: scale(1.4);
-      }
-  
-      50% {
-          transform: scale(1);
-      }
-  
-      100% {
-          transform: scale(1);
-      }
+    0% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(1.4);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 @keyframes beatheart {
-  0% {
-          transform: scale(1);
-      }
-  
-      10% {
-          transform: scale(1);
-      }
-  
-      50% {
-          transform: scale(1.4);
-      }
-  
-      100% {
-          transform: scale(1);
-      }
+    0% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
