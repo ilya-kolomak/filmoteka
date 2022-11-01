@@ -1,4 +1,3 @@
-import './js/slider';
 import './js/hero';
 import './js/renderPagination';
 import './js/modal-dreamTeam';
