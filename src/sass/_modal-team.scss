@@ -117,6 +117,12 @@
 .team-modal__item {
   width: 200px;
   margin-bottom: 25px;
+  border-radius: 5%;
+  &:hover {
+    // background-color: rgba(255, 166, 0, 0.3);
+    transform: scale(1.1);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 .team-modal__item div {
@@ -137,6 +143,7 @@
 .team-modal__role {
   text-align: center;
   font-size: 16px;
+  color: var(--acent-modal);
 }
 
 .team-modal__link {
@@ -147,4 +154,5 @@
   font-size: 30px;
   margin-bottom: 30px;
   text-align: center;
+  color:  var(--acent-modal);
 }

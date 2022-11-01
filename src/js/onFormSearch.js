@@ -4,16 +4,18 @@ import renderMarkupCard from './hero';
 
 let photosContainer = refs.photosContainer;
 const imageApiService = new ImageApiService();
-refs.form.addEventListener('submit', onSearch);
+refs.form && refs.form.addEventListener('submit', onSearch);
 
 async function onSearch(e) {
   e.preventDefault();
-  const searchQuery = e.currentTarget.searchQuery;
+
   const query = searchQuery.value.trim().toLowerCase();
   if (!query) {
     return;
   }
-  imageApiService.query = query;
+
+  imageApiService.searchQuery = query;
+
   clearPage();
   try {
     const { results } = await imageApiService.fetchImagesByQuery();
