@@ -7,10 +7,10 @@ let watchedMoviesIds = [];
 let queueMoviesIds = [];
 
 export function getSelectedMovie(movieContainer, results) {
-  const { watchedMoviesIds, queueMoviesIds } = loadedStoredData();
+  const loadedData = loadedStoredData();
 
-  if (watchedMoviesIds) watchedMoviesIds = loadedData.watchedMoviesIds;
-  if (queueMoviesIds) queueMoviesIds = loadedData.queueMoviesIds;
+  watchedMoviesIds = loadedData.watchedMoviesIds;
+  queueMoviesIds = loadedData.queueMoviesIds;
 
   function handeMovieClick({ target }) {
     const liElem = target.closest('.hero-item');
@@ -109,18 +109,6 @@ export function renderModal(movieEl) {
           .element()
           .querySelector('.modal-main__btn-close').onclick =
           modalRenderHTML.close;
-        document.onkeydown = function (evt) {
-          evt = evt || window.event;
-          var isEscape = false;
-          if ('key' in evt) {
-            isEscape = evt.key === 'Escape' || evt.key === 'Esc';
-          } else {
-            isEscape = evt.key === 27;
-          }
-          if (isEscape) {
-            modalRenderHTML.close();
-          }
-        };
       },
     }
   );
