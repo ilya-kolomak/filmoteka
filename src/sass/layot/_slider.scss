@@ -2,10 +2,10 @@
 @import 'node_modules/@glidejs/glide/src/assets/sass/glide.theme';
 
 .slider-wrapper {
-  background-color: rgb(6, 54, 54);
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 13px;
+
 
   @media screen and (max-width: 1200px) {
     display: none;
@@ -13,7 +13,7 @@
 }
 
 .glide__arrow {
-  background-color: blue;
+  background-color:orange;
 }
 
 .slider-card {
@@ -33,12 +33,13 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 0.86;
-  color: $white;
+  color: whitesmoke;
   text-transform: uppercase;
 }
 
 .slider-image {
   border-radius: 5px;
+  height: auto;
 }
 
 .rating-slider {
@@ -60,8 +61,6 @@
   background-color: orange;
   border-radius: 5px;
 }
-
-// from trailler
 
 .slider-card .btn-youtube-slider {
   width: 100px;
