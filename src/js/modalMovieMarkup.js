@@ -148,9 +148,3 @@ export function renderModal(movieEl) {
     }
   });
 }
-// Фукція яка закриває модалку натисканням на ESC
-// function modalCloseByEsc(e) {
-//   if (e.code === 'Escape') {
-//     modalRenderHTML.close();
-//   }
-// }
