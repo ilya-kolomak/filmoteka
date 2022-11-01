@@ -23,13 +23,15 @@
 // addDarkClassToHTML();
 const checkbox = document.querySelector('.input_checkbox');
 console.log(checkbox);
+const html = document.querySelector('html');
+console.log(html);
 checkbox.addEventListener('change', () => {
   try {
     if (checkbox.checked !== false) {
-      document.querySelector('html').classList.add('dark');
+      document.querySelector('body').classList.add('dark');
       document.querySelector('.material-icons').textContent = 'dark_mode';
     } else {
-      document.querySelector('html').classList.remove('dark');
+      document.querySelector('body').classList.remove('dark');
       document.querySelector('.material-icons').textContent = 'wb_sunny';
     }
   } catch (err) {}
