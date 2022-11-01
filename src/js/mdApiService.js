@@ -71,7 +71,7 @@ export default class ImageApiService {
   }
 
   async fetchImageById(id) {
-    const extarnalId = await this.getMovieExtarnalId(id)
+    const extarnalId = await this.getMovieExtarnalId(id);
     try {
       const response = await axios.get(
         `https://${BASE_URL}find/${extarnalId}?api_key=${API_KEY}&language=en-US&external_source=imdb_id`

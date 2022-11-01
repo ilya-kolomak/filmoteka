@@ -7,10 +7,10 @@ let watchedMoviesIds = [];
 let queueMoviesIds = [];
 
 export function getSelectedMovie(movieContainer, results) {
-  const loadedData = loadedStoredData();
+  const { watchedMoviesIds, queueMoviesIds } = loadedStoredData();
 
-  watchedMoviesIds = loadedData.watchedMoviesIds;
-  queueMoviesIds = loadedData.queueMoviesIds;
+  if (watchedMoviesIds) watchedMoviesIds = watchedMoviesIds;
+  if (queueMoviesIds) queueMoviesIds = queueMoviesIds;
 
   function handeMovieClick({ target }) {
     const liElem = target.closest('.hero-item');

@@ -9,13 +9,13 @@ refs.form && refs.form.addEventListener('submit', onSearch);
 async function onSearch(e) {
   e.preventDefault();
 
-  const query = searchQuery.value.trim().toLowerCase();
+  const query = e.target.searchQuery.value.trim().toLowerCase();
   if (!query) {
     return;
   }
 
   imageApiService.searchQuery = query;
-
+  console.log('imageApiService :>> ', imageApiService);
   clearPage();
   try {
     const { results } = await imageApiService.fetchImagesByQuery();
