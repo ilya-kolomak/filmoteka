@@ -3,6 +3,11 @@ import ImageApiService from './mdApiService';
 import renderMarkupCard from './hero';
 import { refs } from './refs';
 
+if (refs.isLibraryPage) {
+  return;
+}
+
+
 const moviesList = new ImageApiService();
 moviesList.fetchGenres();
 
@@ -17,8 +22,10 @@ async function renderPagination() {
     console.log(pagination);
     pagination.on('afterMove', event => {
       const currentPage = event.page;
+
       localStorage.setItem('pagination', currentPage);
-      moviesList.page = currentPage;
+
+moviesList.page = currentPage;
       rednerCard(currentPage);
     });
   } catch (error) {}

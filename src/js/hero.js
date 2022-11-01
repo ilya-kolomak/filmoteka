@@ -1,14 +1,15 @@
-import ImageApiService from './mdApiService';
+// import ImageApiService from './mdApiService';
 import { getSelectedMovie } from './modalMovieMarkup';
 import { getGenresForCard } from './getGenres';
 
 let photosContainer = document.querySelector('.js-photos-container');
-const imageApiService = new ImageApiService();
+// const imageApiService = new ImageApiService();
 
 export default function renderMarkupCard(results) {
-  imageApiService.fetchImages();
 
   getSelectedMovie(photosContainer, results);
+  
+  // imageApiService.fetchImages();
   return results
     .map(
       ({ poster_path, title, original_title, release_date, genre_ids, id }) => {

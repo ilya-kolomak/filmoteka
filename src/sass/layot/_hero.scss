@@ -50,13 +50,13 @@
     transition: transform 250ms ease-in-out;
     &:not(:last-child) {
         @media screen and (max-width: 767px){
-                margin-bottom: 20px;        
+                margin-bottom: 25px;        
     }
 }
 @media screen and (min-width: 768px) {
     height: 495px;
-    width: calc((100% - 2 * 30px)/2);
-    margin: 15px;
+    width: calc((100% - 2 * 44px)/2);
+    margin: 22px;
     }
     @media screen and (min-width: 1200px) {
         height: 634px;
@@ -67,7 +67,7 @@
 }
 .hero-item:hover {
     cursor: pointer;
-    transform: scale(1.1);  
+    transform: scale(1.05);  
 }
 
 .hero-item .overlay-btn-youtube-text {
@@ -159,3 +159,10 @@ line-height: 24px;
   }
 }
 
+.hidden {
+  display: none;
+}
+
+.removed {
+  display: none;
+}
