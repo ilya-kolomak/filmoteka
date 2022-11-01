@@ -11,6 +11,7 @@ window.addEventListener('load', renderPagination);
 async function renderPagination() {
   try {
     rednerCard();
+
     const pagination = createPagination();
     pagination.on('afterMove', event => {
       const currentPage = event.page;
@@ -27,7 +28,7 @@ async function rednerCard() {
     const markup = renderMarkupCard(results);
     photosContainer.insertAdjacentHTML('beforeend', markup);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
