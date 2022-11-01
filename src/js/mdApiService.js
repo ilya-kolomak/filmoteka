@@ -20,7 +20,7 @@ export default class ImageApiService {
   async fetchImagesByQuery() {
     try {
       const respons = await axios.get(
-        `https:/${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`
+        `https://${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`
       );
       return respons.data;
     } catch (error) {}
