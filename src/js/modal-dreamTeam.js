@@ -1,50 +1,45 @@
-import { btnOnModalTeam, modalBackdrop } from "./refs";
+import { btnOnModalTeam, modalBackdrop } from './refs';
 
-import team from './dreamTeam-info'
+import team from './dreamTeam-info';
 
-
-console.log(btnOnModalTeam);
 btnOnModalTeam.addEventListener('click', onModalTeam);
 
-
 function openModal() {
-    modalBackdrop.classList.add('modal-open');
-    document.body.style.overflow = 'hidden';
-      document.body.classList.add('modal-open')
-    setCloseOptionModal();
-  }
-  function setCloseOptionModal() {
-    modalBackdrop.addEventListener('click', offModalForClickBeackdrop);
-    document.addEventListener('keydown', offModalForEscape);
-    document
-      .querySelector('.modal__btn-closs')
-      .addEventListener('click', offModal);
-  }
+  modalBackdrop.classList.add('modal-open');
+  document.body.style.overflow = 'hidden';
+  document.body.classList.add('modal-open');
+  setCloseOptionModal();
+}
+function setCloseOptionModal() {
+  modalBackdrop.addEventListener('click', offModalForClickBeackdrop);
+  document.addEventListener('keydown', offModalForEscape);
+  document
+    .querySelector('.modal__btn-closs')
+    .addEventListener('click', offModal);
+}
 
+function offModalForEscape(e) {
+  if (e.key === 'Escape') {
+    offModal();
+  }
+}
 
-  function offModalForEscape(e) {
-    if (e.key === 'Escape') {
-      offModal();
-    }
+function offModalForClickBeackdrop(e) {
+  if (e.target === modalBackdrop) {
+    offModal();
   }
-  
-  function offModalForClickBeackdrop(e) {
-    if (e.target === modalBackdrop) {
-      offModal();
-    }
-  }
-  
-  function offModal() {
-      modalBackdrop.firstElementChild.classList.remove('team-modal')
-      modalBackdrop.firstElementChild.classList.add('modal')
-    modalBackdrop.classList.remove('modal-open');
-    document.body.style.overflow = 'overlay';
-      document.body.classList.remove('modal-open')
-    document.removeEventListener('keydown', offModalForEscape);
-    modalBackdrop.removeEventListener('keydown', offModalForClickBeackdrop);
-    modalBackdrop.firstElementChild.dataset.id = '';
-  }
+}
 
+function offModal() {
+  modalBackdrop.firstElementChild.classList.remove('team-modal');
+  modalBackdrop.firstElementChild.classList.add('modal');
+  modalBackdrop.classList.remove('modal-open');
+  document.body.style.overflow = 'overlay';
+  document.body.classList.remove('modal-open');
+  document.removeEventListener('keydown', offModalForEscape);
+  modalBackdrop.removeEventListener('keydown', offModalForClickBeackdrop);
+  modalBackdrop.firstElementChild.dataset.id = '';
+}
 
 const modalCloseBtn = `
 <button class="modal__btn-closs btn__closs-modal">
@@ -71,23 +66,29 @@ function onModalTeam(e) {
 
   renderTeamModal();
   openModal();
-	modalBackdrop.firstElementChild.classList.add('team-modal')
-	modalBackdrop.firstElementChild.classList.remove('modal')
+  modalBackdrop.firstElementChild.classList.add('team-modal');
+  modalBackdrop.firstElementChild.classList.remove('modal');
 }
 
 function renderTeamModal() {
-	modalBackdrop.firstElementChild.innerHTML=''
-  modalTeamList.innerHTML = ''
-  titleTeam.innerHTML = ''
-  modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', titleTeam)
-  titleTeam.classList.add('team-modal__title')
-  titleTeam.insertAdjacentHTML('beforeend', 'Моя команда')
+  modalBackdrop.firstElementChild.innerHTML = '';
+  modalTeamList.innerHTML = '';
+  titleTeam.innerHTML = '';
+  modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', titleTeam);
+  titleTeam.classList.add('team-modal__title');
+  titleTeam.insertAdjacentHTML('beforeend', 'Cotton Popcorn or Suicide Squad<br>group-№8');
 
-	modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', modalTeamList)
-	modalBackdrop.firstElementChild.insertAdjacentHTML('beforeend', modalCloseBtn)
-	modalTeamList.classList.add('team-modal__list')
-	team.map((member) => {
-		const markup = `<li class="team-modal__item">
+  modalBackdrop.firstElementChild.insertAdjacentElement(
+    'beforeend',
+    modalTeamList
+  );
+  modalBackdrop.firstElementChild.insertAdjacentHTML(
+    'beforeend',
+    modalCloseBtn
+  );
+  modalTeamList.classList.add('team-modal__list');
+  team.map(member => {
+    const markup = `<li class="team-modal__item">
 		<img src="${member.img}" class="team-modal__pic">
 		<h2 class="team-modal__name">${member.name}</h2>
     <p class="team-modal__role">${member.role}</p>
@@ -104,7 +105,7 @@ function renderTeamModal() {
       </svg>
 		</a>
 		</div>
-		</li>`
-		modalTeamList.insertAdjacentHTML('beforeend', markup)
-	})
+		</li>`;
+    modalTeamList.insertAdjacentHTML('beforeend', markup);
+  });
 }

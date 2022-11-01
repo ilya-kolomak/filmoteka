@@ -4,37 +4,168 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import * as basicLightbox from 'basiclightbox';
 import '../../node_modules/basiclightbox/src/styles/main.scss';
+import { getWatchedFilms, getQueueFilms } from './local_storage';
+import { getSelectedMovie } from './modalMovieMarkup';
+import ImageApiService from './mdApiService';
+import renderMarkupCard from './hero';
+import { loadedStoredData } from './movieLocalStorage';
 
-try {
-  refs.btnWatched.addEventListener('click', onBtnWatchedClick);
-  refs.btnQueue.addEventListener('click', onBtnQueueClick);
-} catch {
-  // console.log('Немає даних');
-}
-// createPagination('watched');
-export let currentLibrary = 'watched';
-try {
-  createPagination(`${currentLibrary}`);
-} catch {
-  // console.log('Немає даних');
+if (!refs.isLibraryPage) {
+  return;
 }
 
-function onBtnWatchedClick(e) {
-  currentLibrary = 'watched';
-  createPagination(`${currentLibrary}`);
+const imageApiService = new ImageApiService();
+// getSelectedMovie(photosContainer, results);
+const { photosContainer } = refs;
 
-  refs.btnWatched.style.backgroundColor = '#FF6B02';
-  refs.btnWatched.style.borderColor = '#FF6B02';
-  refs.btnQueue.style.backgroundColor = 'transparent';
-  refs.btnQueue.style.borderColor = '#FFFFFF';
+let isWatchedVisible = true;
+let isQueueVisible = false;
+let watchedResults = [];
+let queueResults = [];
+let unitedList = [];
+let allMovieCards = [];
+let storedData = {};
+
+renderLibrary();
+
+function renderLibraryList(results) {
+  const markup = renderMarkupCard(results);
+
+  photosContainer.insertAdjacentHTML('beforeend', markup);
 }
 
-function onBtnQueueClick(e) {
-  currentLibrary = 'queue';
-  createPagination(`${currentLibrary}`);
+export async function renderLibrary() {
+  if (!refs.isLibraryPage) {
+    return;
+  }
 
-  refs.btnQueue.style.backgroundColor = '#ff6b08';
-  refs.btnQueue.style.borderColor = '#FF6B02';
-  refs.btnWatched.style.backgroundColor = 'transparent';
-  refs.btnWatched.style.borderColor = '#FFFFFF';
+  storedData = loadedStoredData();
+  watchedResults = await getLibraryData(storedData.watchedMoviesIds);
+  queueResults = await getLibraryData(storedData.queueMoviesIds);
+  unitedList = [...watchedResults, ...queueResults];
+
+  console.log('unitedList', unitedList);
+
+  renderLibraryList(unitedList);
+
+  filterMoviesCategorry();
 }
+
+function filterMoviesCategorry() {
+  storedData = loadedStoredData();
+
+  allMovieCards = [...document.querySelectorAll('.hero-item')];
+
+  allMovieCards.forEach((card, index) => {
+    // debugger
+    if (isWatchedVisible) {
+      if (index < watchedResults.length) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    }
+
+    if (isQueueVisible) {
+      if (index >= watchedResults.length) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    }
+  });
+  if (isWatchedVisible) {
+    if (storedData.watchedMoviesIds.length) {
+      refs.nothingWatch.classList.add('hidden');
+    } else {
+      refs.nothingWatch.classList.remove('hidden');
+    }
+  }
+  if (isQueueVisible) {
+    if (storedData.queueMoviesIds.length) {
+      refs.nothingWatch.classList.add('hidden');
+    } else {
+      refs.nothingWatch.classList.remove('hidden');
+    }
+  }
+}
+
+async function getLibraryData(ids) {
+  const data = [];
+  for (let id of ids) {
+    const fetchedMovieData = await imageApiService.fetchImageById(id);
+    data.push(...fetchedMovieData.movie_results);
+  }
+
+  return data;
+}
+
+export function removeFromList(id) {
+  console.log('id', id);
+  if (!refs.isLibraryPage) {
+    return;
+  }
+
+  if (isWatchedVisible) {
+    const removedMovie = allMovieCards
+      .slice(0, watchedResults.length)
+      .find(card => Number(card.dataset.id) === id)
+      .classList.add('removed');
+    console.log('removedMovie', removedMovie);
+  }
+
+  if (isQueueVisible) {
+    const removedMovie = allMovieCards
+      .slice(isQueueVisible.length)
+      .find(card => Number(card.dataset.id) === id)
+      .classList.add('removed');
+    console.log('removedMovie', removedMovie);
+  }
+
+  filterMoviesCategorry();
+}
+
+export function addToList(id) {
+  if (!refs.isLibraryPage) {
+    return;
+  }
+
+  if (isWatchedVisible) {
+    const removedMovie = allMovieCards
+      .slice(0, watchedResults.length)
+      .find(card => Number(card.dataset.id) === id)
+      .classList.remove('removed');
+    console.log('removedMovie', removedMovie);
+  }
+
+  if (isQueueVisible) {
+    const removedMovie = allMovieCards
+      .slice(isQueueVisible.length)
+      .find(card => Number(card.dataset.id) === id)
+      .classList.remove('removed');
+    console.log('removedMovie', removedMovie);
+  }
+
+  filterMoviesCategorry();
+}
+
+refs.libraryWatched.addEventListener('click', () => {
+  isWatchedVisible = true;
+  isQueueVisible = false;
+
+  filterMoviesCategorry();
+
+  refs.libraryWatched.classList.add('header-library__button--current');
+  refs.libraryQueue.classList.remove('header-library__button--current');
+});
+
+refs.libraryQueue.addEventListener('click', () => {
+  isWatchedVisible = false;
+  isQueueVisible = true;
+
+  filterMoviesCategorry();
+
+  refs.libraryWatched.classList.remove('header-library__button--current');
+  refs.libraryQueue.classList.add('header-library__button--current');
+});
+// renderMarkupCard()

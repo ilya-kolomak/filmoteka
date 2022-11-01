@@ -31,16 +31,55 @@ export default class ImageApiService {
       const response = await axios.get(
         `https://${BASE_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`
       );
+      console.log(response);
       return response.genres;
     } catch (error) {}
   }
+  // insertGenresToMovieObj() {
+  //   return this.fetchImages().then(data => {
+  //     return this.fetchGenres().then(genresList => {
+  //       return data.map(movie => ({
+  //         ...movie,
+  //         genres: movie.genre_ids
+  //           .map(id => genresList.filter(el => el.id === id))
+  //           .flat(),
+  //       }));
+  //     });
+  //   });
+  // }
+
   async fetchVideo(id) {
     try {
       const response = await axios.get(
-        `https://${BASE_URL}movie/${id}/videos?api_key=${API_KEY}&language=en-US`
+        `https://${BASE_URL}movie/${id}/videos?api_key=${API_KEY}&language=en-US&site=YouTube`
       );
-      return response.genres;
+
+      // console.log(response.data.id);
+      return response.data.id;
     } catch (error) {}
+  }
+
+  async getMovieExtarnalId(id) {
+    try {
+      const response = await axios.get(
+        `https://${BASE_URL}movie/${id}/external_ids?api_key=${API_KEY}`
+      );
+      return response.data.imdb_id;
+    } catch (error) {
+      console.log('error in fetchImagesById', error);
+    }
+  }
+
+  async fetchImageById(id) {
+    const extarnalId = await this.getMovieExtarnalId(id)
+    try {
+      const response = await axios.get(
+        `https://${BASE_URL}find/${extarnalId}?api_key=${API_KEY}&language=en-US&external_source=imdb_id`
+      );
+      return response.data;
+    } catch (error) {
+      console.log('error in fetchImagesById', error);
+    }
   }
 
   resetPage() {
@@ -53,4 +92,12 @@ export default class ImageApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+
+  // get searchQuery() {
+  //   return this.searchQuery;
+  // }
+
+  // set searchQuery(newQuery) {
+  //   this.searchQuery = newQuery;
+  // }
 }

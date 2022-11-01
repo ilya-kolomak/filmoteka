@@ -1,68 +1,62 @@
 [
   {
-    "name": "Ilya Kolomak",
-    "role": "Team Lead",
+    "name": "Ilya<br>Kolomak",
+    "role": "Team Lead<br>Scrum Master",
     "git": "https://github.com/ilya-kolomak",
     "img": "https://avatars.githubusercontent.com/u/99127402?v=4"
   },
   {
-    "name": " ",
-    "role": "Scrum Master",
-    "git": " ",
-    "img": " "
-  },
-  {
-    "name": "Serhii Artyshchuk",
+    "name": "Serhii<br>Artyshchuk",
     "role": "Developer",
     "git": "https://github.com/LachesisAsa",
     "img": "https://avatars.githubusercontent.com/u/104760743?s=96&v=4"
   },
   {
-    "name": "Tanya Kuchak",
+    "name": "Tanya<br>Kuchak",
     "role": "Developer",
     "git": "https://github.com/TanyaKuchak",
     "img": "https://avatars.githubusercontent.com/u/105127427?v=4"
   },
   {
-    "name": "Alisa Verbitska",
+    "name": "Alisa<br>Verbitska",
     "role": "Developer",
     "git": "https://github.com/VerbitskaAlisa",
     "img": "https://avatars.githubusercontent.com/u/104210874?v=4"
   },
   {
-    "name": "Oleksii Nedohybchenko",
+    "name": "Oleksii<br>Nedohybchenko",
     "role": "Developer",
     "git": "https://github.com/aleksnedo",
     "img": "https://avatars.githubusercontent.com/u/104201289?v=4"
   },
   {
-    "name": "Nikita Polozov",
+    "name": "Nikita<br>Polozov",
     "role": "Developer",
     "git": "https://github.com/Npolozov",
     "img": "https://avatars.githubusercontent.com/u/103377917?v=4"
   },
   {
-    "name": "Veronika Terletska",
+    "name": "Veronika<br>Terletska",
     "role": "Developer",
     "git": "https://github.com/VeronikaTerletska",
     "img": "https://avatars.githubusercontent.com/u/104487544?s=400&u=ee1ed9b353f046a781415b57f2d339fb54a9c546&v=4"
   },
   {
-    "name": " ",
+    "name": "Nikita<br>Zheldak",
     "role": "Developer",
-    "git": " ",
-    "img": " "
+    "git": "https://github.com/NickBayern",
+    "img": "https://avatars.githubusercontent.com/u/97752779?v=4"
   },
   {
-    "name": " ",
+    "name": "Yuliia<br>Bakai",
     "role": "Developer",
-    "git": " ",
-    "img": " "
+    "git": "https://github.com/Yuliia-Bakai",
+    "img": "https://avatars.githubusercontent.com/u/103931718?v=4"
   },
   {
-    "name": " ",
+    "name": "Roman<br>Stets",
     "role": "Developer",
-    "git": " ",
-    "img": " "
+    "git": "https://github.com/IndieHippie",
+    "img": "https://avatars.githubusercontent.com/u/106179464?v=4"
   }
 ]
