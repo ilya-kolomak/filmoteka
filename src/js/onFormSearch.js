@@ -1,6 +1,7 @@
 import ImageApiService from './mdApiService';
 import { refs } from './refs';
 import renderMarkupCard from './hero';
+import createPagination from './pagination';
 
 let photosContainer = refs.photosContainer;
 const imageApiService = new ImageApiService();

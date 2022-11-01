@@ -142,9 +142,15 @@ export function renderModal(movieEl) {
     } else {
       queueMoviesIds.push(id);
       event.target.textContent = 'remove from queue';
-      
+
       localStorage.setItem('queue', JSON.stringify(queueMoviesIds));
       addToList(id);
     }
   });
 }
+// Фукція яка закриває модалку натисканням на ESC
+// function modalCloseByEsc(e) {
+//   if (e.code === 'Escape') {
+//     modalRenderHTML.close();
+//   }
+// }
