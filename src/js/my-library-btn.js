@@ -37,7 +37,7 @@ function renderLibraryList(results) {
 export async function renderLibrary() {
   if (!refs.isLibraryPage) {
     return;
-  } 
+  }
 
   storedData = loadedStoredData();
   watchedResults = await getLibraryData(storedData.watchedMoviesIds);
@@ -45,16 +45,14 @@ export async function renderLibrary() {
   unitedList = [...watchedResults, ...queueResults];
 
   console.log('unitedList', unitedList);
-  
+
   renderLibraryList(unitedList);
 
-  filterMoviesCategorry()
+  filterMoviesCategorry();
 }
 
 function filterMoviesCategorry() {
-
   storedData = loadedStoredData();
-
 
   allMovieCards = [...document.querySelectorAll('.hero-item')];
 
@@ -62,20 +60,20 @@ function filterMoviesCategorry() {
     // debugger
     if (isWatchedVisible) {
       if (index < watchedResults.length) {
-        card.classList.remove('hidden')
+        card.classList.remove('hidden');
       } else {
-        card.classList.add('hidden')
+        card.classList.add('hidden');
       }
     }
 
     if (isQueueVisible) {
       if (index >= watchedResults.length) {
-        card.classList.remove('hidden')
+        card.classList.remove('hidden');
       } else {
-        card.classList.add('hidden')
+        card.classList.add('hidden');
       }
     }
-  })
+  });
   if (isWatchedVisible) {
     if (storedData.watchedMoviesIds.length) {
       refs.nothingWatch.classList.add('hidden');
@@ -103,54 +101,71 @@ async function getLibraryData(ids) {
 }
 
 export function removeFromList(id) {
-console.log('id', id);
+  console.log('id', id);
   if (!refs.isLibraryPage) {
     return;
   }
 
   if (isWatchedVisible) {
-    const removedMovie = allMovieCards.slice(0, watchedResults.length).find(card => Number(card.dataset.id) === id).classList.add('removed');
-    console.log('removedMovie', removedMovie);
-  }
-  
-  if (isQueueVisible) {
-    const removedMovie = allMovieCards.slice(isQueueVisible.length).find(card => Number(card.dataset.id) === id).classList.add('removed');
+    const removedMovie = allMovieCards
+      .slice(0, watchedResults.length)
+      .find(card => Number(card.dataset.id) === id)
+      .classList.add('removed');
     console.log('removedMovie', removedMovie);
   }
 
-  filterMoviesCategorry()
+  if (isQueueVisible) {
+    const removedMovie = allMovieCards
+      .slice(isQueueVisible.length)
+      .find(card => Number(card.dataset.id) === id)
+      .classList.add('removed');
+    console.log('removedMovie', removedMovie);
+  }
+
+  filterMoviesCategorry();
 }
 
 export function addToList(id) {
-
   if (!refs.isLibraryPage) {
     return;
   }
 
   if (isWatchedVisible) {
-    const removedMovie = allMovieCards.slice(0, watchedResults.length).find(card => Number(card.dataset.id) === id).classList.remove('removed');
-    console.log('removedMovie', removedMovie);
-  }
-  
-  if (isQueueVisible) {
-    const removedMovie = allMovieCards.slice(isQueueVisible.length).find(card => Number(card.dataset.id) === id).classList.remove('removed');
+    const removedMovie = allMovieCards
+      .slice(0, watchedResults.length)
+      .find(card => Number(card.dataset.id) === id)
+      .classList.remove('removed');
     console.log('removedMovie', removedMovie);
   }
 
-  filterMoviesCategorry()
+  if (isQueueVisible) {
+    const removedMovie = allMovieCards
+      .slice(isQueueVisible.length)
+      .find(card => Number(card.dataset.id) === id)
+      .classList.remove('removed');
+    console.log('removedMovie', removedMovie);
+  }
+
+  filterMoviesCategorry();
 }
 
 refs.libraryWatched.addEventListener('click', () => {
   isWatchedVisible = true;
   isQueueVisible = false;
 
-  filterMoviesCategorry()
+  filterMoviesCategorry();
+
+  refs.libraryWatched.classList.add('header-library__button--current');
+  refs.libraryQueue.classList.remove('header-library__button--current');
 });
 
 refs.libraryQueue.addEventListener('click', () => {
   isWatchedVisible = false;
   isQueueVisible = true;
 
-  filterMoviesCategorry()
+  filterMoviesCategorry();
+
+  refs.libraryWatched.classList.remove('header-library__button--current');
+  refs.libraryQueue.classList.add('header-library__button--current');
 });
 // renderMarkupCard()
