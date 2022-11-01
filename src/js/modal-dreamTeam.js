@@ -76,7 +76,7 @@ function renderTeamModal() {
   titleTeam.innerHTML = '';
   modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', titleTeam);
   titleTeam.classList.add('team-modal__title');
-  titleTeam.insertAdjacentHTML('beforeend', 'Моя команда');
+  titleTeam.insertAdjacentHTML('beforeend', 'Cotton Popcorn or Suicide Squad<br>group-№8');
 
   modalBackdrop.firstElementChild.insertAdjacentElement(
     'beforeend',
