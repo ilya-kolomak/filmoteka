@@ -33,16 +33,12 @@ const options = {
 };
 
 let pagination = null;
+
 const createPagination = () => {
   if (!pagination) {
     pagination = new Pagination(paginationContainer, options);
   }
   return pagination;
 };
-
-// const createPagination = () => {
-//   const pagination = new Pagination(paginationContainer, options);
-//   return pagination;
-// };
 
 export default createPagination;
