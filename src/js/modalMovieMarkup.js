@@ -1,32 +1,31 @@
 import * as basicLightbox from 'basiclightbox';
 import '../../node_modules/basiclightbox/src/styles/main.scss';
-// import { getGenresForModal } from './getGenres';
+import { loadedStoredData } from './movieLocalStorage';
+import { removeFromList, addToList } from './my-library-btn';
 
 let watchedMoviesIds = [];
 let queueMoviesIds = [];
 
-function loadedStoredData() {
-  const storedData = localStorage.getItem('watched');
-  const storedQueue = localStorage.getItem('queue');
-  if (storedData) {
-    watchedMoviesIds = JSON.parse(storedData);
-  }
-  if (storedQueue) {
-    queueMoviesIds = JSON.parse(storedQueue);
-  }
-}
-
 export function getSelectedMovie(movieContainer, results) {
-  loadedStoredData();
-  movieContainer.addEventListener('click', ({ target }) => {
+  const loadedData = loadedStoredData();
+
+  watchedMoviesIds = loadedData.watchedMoviesIds;
+  queueMoviesIds = loadedData.queueMoviesIds;
+
+  function handeMovieClick({ target }) {
     const liElem = target.closest('.hero-item');
+
     if (!liElem) {
       return;
     }
     const { id } = liElem.dataset;
     const selectedMovie = results.find(result => result.id === Number(id));
+
     renderModal(selectedMovie);
-  });
+  }
+
+  // movieContainer.removeEventListener('click', handeMovieClick);
+  movieContainer.addEventListener('click', handeMovieClick);
 }
 
 function isWatchedMovie(id) {
@@ -116,24 +115,36 @@ export function renderModal(movieEl) {
   modalRenderHTML.show();
 
   document.querySelector('.add__watched').addEventListener('click', event => {
+    console.log('clicked');
     if (isWatchedMovie(id)) {
       watchedMoviesIds = watchedMoviesIds.filter(watchedId => watchedId != id);
       event.target.textContent = 'add to watched';
+      localStorage.setItem('watched', JSON.stringify(watchedMoviesIds));
+
+      removeFromList(id);
     } else {
       watchedMoviesIds.push(id);
       event.target.textContent = 'remove from watched';
+      localStorage.setItem('watched', JSON.stringify(watchedMoviesIds));
+
+      addToList(id);
     }
-    localStorage.setItem('watched', JSON.stringify(watchedMoviesIds));
   });
 
   document.querySelector('.add__queue').addEventListener('click', event => {
     if (isQueueMovie(id)) {
       queueMoviesIds = queueMoviesIds.filter(queuedId => queuedId != id);
       event.target.textContent = 'add to queue';
+
+      localStorage.setItem('queue', JSON.stringify(queueMoviesIds));
+
+      removeFromList(id);
     } else {
       queueMoviesIds.push(id);
       event.target.textContent = 'remove from queue';
+      
+      localStorage.setItem('queue', JSON.stringify(queueMoviesIds));
+      addToList(id);
     }
-    localStorage.setItem('queue', JSON.stringify(queueMoviesIds));
   });
 }

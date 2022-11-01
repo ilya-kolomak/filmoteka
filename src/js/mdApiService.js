@@ -59,6 +59,29 @@ export default class ImageApiService {
     } catch (error) {}
   }
 
+  async getMovieExtarnalId(id) {
+    try {
+      const response = await axios.get(
+        `https://${BASE_URL}movie/${id}/external_ids?api_key=${API_KEY}`
+      );
+      return response.data.imdb_id;
+    } catch (error) {
+      console.log('error in fetchImagesById', error);
+    }
+  }
+
+  async fetchImageById(id) {
+    const extarnalId = await this.getMovieExtarnalId(id)
+    try {
+      const response = await axios.get(
+        `https://${BASE_URL}find/${extarnalId}?api_key=${API_KEY}&language=en-US&external_source=imdb_id`
+      );
+      return response.data;
+    } catch (error) {
+      console.log('error in fetchImagesById', error);
+    }
+  }
+
   resetPage() {
     this.page = 1;
   }
