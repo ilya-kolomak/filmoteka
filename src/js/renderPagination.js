@@ -12,6 +12,7 @@ localPagination();
 async function renderPagination() {
   try {
     rednerCard();
+
     const pagination = createPagination();
     console.log(pagination);
     pagination.on('afterMove', event => {

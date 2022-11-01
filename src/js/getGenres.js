@@ -62,6 +62,7 @@ export function getGenresForCard(array) {
 
       genre_names += genre_name;
     }
-    return genre_names;
+    // return genre_names;
+    console.log(genre_names);
   }
 }
