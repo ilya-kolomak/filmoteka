@@ -7,10 +7,6 @@ export const refs = {
   isLibraryPage: document.querySelector('.library-section'),
   nothingWatch: document.querySelector('.js-not-film'),
 
-  // buttons'
-  btnWatched: document.querySelector('#watched'),
-  btnQueue: document.querySelector('#queue'),
-
   // Modal btns;
   btnAddToWatched: document.querySelector('.add__watched'),
   btnAddToQueue: document.querySelector('.add__queue'),
