@@ -39,6 +39,7 @@ function clearPage() {
 
 function localPagination() {
   const savePagination = localStorage.getItem('pagination');
+  console.log('savePagination :>> ', savePagination);
   if (savePagination) {
     moviesList.page = savePagination;
     const pagination = createPagination();

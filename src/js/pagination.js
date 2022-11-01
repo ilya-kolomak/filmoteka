@@ -32,8 +32,10 @@ const options = {
   },
 };
 
+let pagination = null;
+
 const createPagination = () => {
-  const pagination = new Pagination(paginationContainer, options);
+  if (!pagination) pagination = new Pagination(paginationContainer, options);
   return pagination;
 };
 
