@@ -32,9 +32,7 @@ async function renderPagination() {
 
 async function rednerCard() {
   clearPage();
-  console.log(2222);
   try {
-    //document.querySelector('#search').value
     let data = null;
     moviesList.searchQuery = document.querySelector('#search').value;
     if (!moviesList.searchQuery) data = await moviesList.fetchImages();
