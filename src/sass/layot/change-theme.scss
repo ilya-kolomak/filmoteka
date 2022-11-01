@@ -1,7 +1,6 @@
 .label_checkbox {
   font-size: 16px;
   line-height: 26px;
-  color: black;
   border: none;
   position: relative;
   cursor: pointer;
@@ -24,7 +23,7 @@
   content: '';
   width: 21px;
   height: 21px;
-  background-color: black;
+  background-color: rgb(240, 128, 47);
   border-radius: 50%;
   position: absolute;
   top: -1px;
@@ -37,13 +36,13 @@
   display: none;
 }
 
-// .input_checkbox:checked + .label_checkbox::after {
-//   background-color: white;
-// }
+.input_checkbox:checked + .label_checkbox::after {
+  background-color: rgb(80, 78, 78);
+}
 
 .input_checkbox:checked + .label_checkbox::before {
   right: -57px;
-  //   background-color: black;
+  background-color: rgb(123, 119, 119);
 }
 
 .themetoggle {
@@ -71,4 +70,8 @@ span.material-icons {
   top: -1px;
   left: -14px;
   color: orange;
+}
+
+.input_checkbox:checked + span.material-icons {
+  color: rgb(123, 119, 119) !important;
 }
