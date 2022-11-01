@@ -1,6 +1,11 @@
 import createPagination from './pagination';
 import ImageApiService from './mdApiService';
 import renderMarkupCard from './hero';
+import { refs } from './refs';
+
+if (refs.isLibraryPage) {
+  return;
+}
 
 const moviesList = new ImageApiService();
 const photosContainer = document.querySelector('.js-photos-container');
@@ -14,6 +19,7 @@ async function renderPagination() {
     const pagination = createPagination();
     pagination.on('afterMove', event => {
       const currentPage = event.page;
+      console.log('moviesList', moviesList);
       moviesList.page = currentPage;
       rednerCard(currentPage);
     });

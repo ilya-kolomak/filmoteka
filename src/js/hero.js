@@ -1,12 +1,14 @@
-import ImageApiService from './mdApiService';
+// import ImageApiService from './mdApiService';
 import { getSelectedMovie } from './modalMovieMarkup';
 
 let photosContainer = document.querySelector('.js-photos-container');
-const imageApiService = new ImageApiService();
+// const imageApiService = new ImageApiService();
 
 export default function renderMarkupCard(results) {
-  imageApiService.fetchImages();
+
   getSelectedMovie(photosContainer, results);
+  
+  // imageApiService.fetchImages();
   return results
     .map(({ poster_path, title, original_title, release_date, id }) => {
       return ` <li class="hero-item" data-id="${id}">

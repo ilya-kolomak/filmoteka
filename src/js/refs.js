@@ -4,6 +4,8 @@ export const refs = {
   btnOnModalTeam: document.querySelector('.team-link'),
   modalBackdrop: document.querySelector('.modal-backdrop'),
   photosContainer: document.querySelector('.js-photos-container'),
+  isLibraryPage: document.querySelector('.library-section'),
+  nothingWatch: document.querySelector('.js-not-film'),
 
   // buttons'
   btnWatched: document.querySelector('#watched'),
@@ -14,6 +16,9 @@ export const refs = {
   btnAddToQueue: document.querySelector('.add__queue'),
 
   closeModalBtn: document.querySelector('.btn-close'),
+
+  libraryWatched: document.querySelector('#watched'),
+  libraryQueue: document.querySelector('#queue'),
 
   //modal-card
   modalCardBackdrop: document.querySelector('.modal-card-backdrop'),
