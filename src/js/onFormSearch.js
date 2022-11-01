@@ -15,7 +15,7 @@ async function onSearch(e) {
   if (!query) {
     return;
   }
-  imageApiService.query = query;
+  imageApiService.searchQuery = query;
   clearPage();
   try {
     const { results } = await imageApiService.fetchImagesByQuery();
