@@ -92,4 +92,12 @@ export default class ImageApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+
+  // get searchQuery() {
+  //   return this.searchQuery;
+  // }
+
+  // set searchQuery(newQuery) {
+  //   this.searchQuery = newQuery;
+  // }
 }
