@@ -37,7 +37,7 @@ async function rednerCard() {
     moviesList.searchQuery = document.querySelector('#search').value;
     if (!moviesList.searchQuery) data = await moviesList.fetchImages();
     else data = await moviesList.fetchImagesByQuery();
-    console.log('data.results :>> ', data.results);
+    console.log(data.results);
     const markup = renderMarkupCard(data.results);
     refs.photosContainer.insertAdjacentHTML('beforeend', markup);
   } catch (error) {
