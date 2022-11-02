@@ -17,6 +17,10 @@
   top: -4px;
   right: -62px;
   transition: linear 300ms;
+
+  .input_checkbox:hover + & {
+    border-color: orange;
+  }
 }
 
 .label_checkbox::before {
@@ -70,8 +74,4 @@ span.material-icons {
   top: -1px;
   left: -14px;
   color: orange;
-}
-
-.input_checkbox:checked + span.material-icons {
-  color: rgb(123, 119, 119) !important;
 }
