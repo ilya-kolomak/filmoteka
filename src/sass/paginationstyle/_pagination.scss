@@ -1,17 +1,14 @@
 .tui-pagination .tui-page-btn {
   color: black !important;
   border: none !important;
+  transition: linear 300ms !important;
 }
 
-.tui-page-btn:hover {
+a.tui-page-btn:hover {
   background-color: transparent !important;
+  border: 1px solid orange !important;
+  border-radius: 10px;
 }
-
-// .tui- {
-//   @media screen and (max-width: 767px) {
-//     display: none !important;
-//   }
-// }
 
 .tui-pagination .tui-is-selected,
 .tui-pagination strong {
@@ -22,6 +19,11 @@
   border: none !important;
   border-radius: 10px !important;
   line-height: 2.1 !important;
+  @media screen and (max-width: 767px) {
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 1.4 !important;
+  }
 }
 
 .tui-pagination .tui-prev-is-ellip {
