@@ -3,14 +3,14 @@ import '../../node_modules/basiclightbox/src/styles/main.scss';
 import { loadedStoredData } from './movieLocalStorage';
 import { removeFromList, addToList } from './my-library-btn';
 
-let watchedMoviesIds = [];
-let queueMoviesIds = [];
+let watchedIds = [];
+let queueIds = [];
 
 export function getSelectedMovie(movieContainer, results) {
   const { watchedMoviesIds, queueMoviesIds } = loadedStoredData();
 
-  if (watchedMoviesIds) watchedMoviesIds = watchedMoviesIds;
-  if (queueMoviesIds) queueMoviesIds = queueMoviesIds;
+  if (watchedMoviesIds) watchedIds = watchedMoviesIds;
+  if (queueMoviesIds) queueIds = queueMoviesIds;
 
   function handeMovieClick({ target }) {
     const liElem = target.closest('.hero-item');
@@ -29,11 +29,11 @@ export function getSelectedMovie(movieContainer, results) {
 }
 
 function isWatchedMovie(id) {
-  return watchedMoviesIds.find(currId => currId === id);
+  return watchedIds.find(currId => currId === id);
 }
 
 function isQueueMovie(id) {
-  return queueMoviesIds.find(currId => currId === id);
+  return queueIds.find(currId => currId === id);
 }
 
 export function renderModal(movieEl) {
@@ -109,6 +109,19 @@ export function renderModal(movieEl) {
           .element()
           .querySelector('.modal-main__btn-close').onclick =
           modalRenderHTML.close;
+        
+        document.onkeydown = function (evt) {
+          evt = evt || window.event;
+          let isEscape = false;
+          if ('key' in evt) {
+            isEscape = evt.key === 'Escape' || evt.key === 'Esc';
+          } else {
+            isEscape = evt.key === 27;
+          }
+          if (isEscape) {
+            modalRenderHTML.close();
+          }
+        };
       },
     }
   );
@@ -117,15 +130,15 @@ export function renderModal(movieEl) {
   document.querySelector('.add__watched').addEventListener('click', event => {
     console.log('clicked');
     if (isWatchedMovie(id)) {
-      watchedMoviesIds = watchedMoviesIds.filter(watchedId => watchedId != id);
+      watchedIds = watchedIds.filter(watchedId => watchedId != id);
       event.target.textContent = 'add to watched';
-      localStorage.setItem('watched', JSON.stringify(watchedMoviesIds));
+      localStorage.setItem('watched', JSON.stringify(watchedIds));
 
       removeFromList(id);
     } else {
-      watchedMoviesIds.push(id);
+      watchedIds.push(id);
       event.target.textContent = 'remove from watched';
-      localStorage.setItem('watched', JSON.stringify(watchedMoviesIds));
+      localStorage.setItem('watched', JSON.stringify(watchedIds));
 
       addToList(id);
     }
@@ -133,17 +146,17 @@ export function renderModal(movieEl) {
 
   document.querySelector('.add__queue').addEventListener('click', event => {
     if (isQueueMovie(id)) {
-      queueMoviesIds = queueMoviesIds.filter(queuedId => queuedId != id);
+      queueIds = queueIds.filter(queuedId => queuedId != id);
       event.target.textContent = 'add to queue';
 
-      localStorage.setItem('queue', JSON.stringify(queueMoviesIds));
+      localStorage.setItem('queue', JSON.stringify(queueIds));
 
       removeFromList(id);
     } else {
-      queueMoviesIds.push(id);
+      queueIds.push(id);
       event.target.textContent = 'remove from queue';
 
-      localStorage.setItem('queue', JSON.stringify(queueMoviesIds));
+      localStorage.setItem('queue', JSON.stringify(queueIds));
       addToList(id);
     }
   });
