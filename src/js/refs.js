@@ -22,3 +22,4 @@ export const refs = {
 };
 
 export const { btnOnModalTeam, modalBackdrop } = refs;
+console.log(refs.isLibraryPage);
