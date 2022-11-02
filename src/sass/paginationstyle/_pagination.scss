@@ -2,13 +2,16 @@
   color: black !important;
   border: none !important;
   transition: linear 300ms !important;
+  border-radius: 10px !important;
+  background-color: white !important;
+  margin: 0 3px !important;
 }
 
-a.tui-page-btn:hover {
-  background-color: transparent !important;
-  border: 1px solid orange !important;
-  border-radius: 10px;
-}
+// a.tui-page-btn:hover {
+//   background-color: transparent !important;
+//   border: 1px solid orange !important;
+//   border-radius: 10px;
+// }
 
 .tui-pagination .tui-is-selected,
 .tui-pagination strong {
@@ -38,8 +41,7 @@ a.tui-page-btn:hover {
   }
 }
 
-.tui-ico-last,
-.tui-ico-first {
+a.tui-page-btn.tui- {
   @media screen and (max-width: 767px) {
     display: none !important;
   }
