@@ -22,8 +22,7 @@ async function onSearch(e) {
     await imageApiService.fetchImagesByQuery();
 
    if(results.length === 0) {
-    refs.alarm.classList.remove('is-hidden');
-    refs.alarm.textContent = "Nothing was found for your request.";
+    refs.notification.classList.remove('is-hidden');
    }
 
     const markup = renderMarkupCard(results);
@@ -39,4 +38,5 @@ function clearPage() {
   imageApiService.resetPage();
   photosContainer.innerHTML = '';
   refs.alarm.classList.add('is-hidden');
+  refs.notification.classList.add('is-hidden');
 }

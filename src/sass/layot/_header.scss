@@ -72,6 +72,7 @@
   fill: $white;
   margin-right: 10px;
 }
+
 .logo-text {
   display: none;
   @include tablet {
@@ -81,8 +82,32 @@
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
+
+    width: 141px;
+    
   }
 }
+
+.focus-in-expand-fwd {
+	animation: focus-in-expand-fwd 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+ @keyframes focus-in-expand-fwd {
+  0% {
+    letter-spacing: -0.5em;
+    transform: translateZ(-800px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+
+
 
 nav {
   display: flex;
