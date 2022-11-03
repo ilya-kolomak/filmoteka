@@ -67,10 +67,6 @@
   margin-right: 10px;
 }
 
-.animation-box {
-  width: 141px;
-}
- 
 .logo-text {
   display: none;
   @include tablet {
@@ -80,6 +76,8 @@
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
+
+    width: 141px;
     
   }
 }
