@@ -53,6 +53,10 @@
   }
 }
 
+.container.header-container {
+  height: 126px;
+}
+
 .logo-link {
   display: flex;
   align-items: center;
@@ -174,4 +178,14 @@ nav {
   @include desktop {
     left: 65%;
   }
+}
+
+.alarm-text {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.alarm-text.is-hidden {
+   display: none;
 }
