@@ -14,7 +14,9 @@
   background-image: url('../images/youtube.svg');
   background-color: transparent;
 }
-
+.btn-youtube {
+  cursor: grab;
+}
 .btn-youtube-text {
   position: absolute;
   font-family: 'Roboto', sans-serif;
@@ -25,7 +27,9 @@
   z-index: 5;
 }
 
-.card__film .overlay-btn-youtube-text {
+// .card__film .overlay-btn-youtube-text,
+.overlay-btn-youtube-text
+ {
   position: absolute;
   display: flex;
   align-items: center;
@@ -48,7 +52,9 @@
   transition: all 400ms ease-in;
 }
 
-.card__film:hover .overlay-btn-youtube-text {
+// .card__film:hover .overlay-btn-youtube-text,
+.btn-youtube:hover .overlay-btn-youtube-text
+ {
   display: flex;
   opacity: 1;
   transform: translateX(-63%);
@@ -75,8 +81,6 @@
   background-repeat: no-repeat;
   background-color: orangered;
 z-index: 2000;
-
-  //   transition: all 300ms ease-in;
 }
 
 .lightbox__button:hover,
@@ -88,7 +92,6 @@ z-index: 2000;
   .lightbox__button {
     top: 150px;
     right: 5vh;
-    // right: calc(((100vw - 324px) / 2));
   }
 }
 

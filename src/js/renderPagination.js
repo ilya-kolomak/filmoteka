@@ -1,6 +1,7 @@
 import createPagination from './pagination';
 import ImageApiService from './mdApiService';
 import renderMarkupCard from './hero';
+
 import { refs } from './refs';
 
 if (refs.isLibraryPage) {
@@ -33,12 +34,19 @@ async function renderPagination() {
 async function rednerCard() {
   clearPage();
   try {
+
+    // деструктеризация с последнего реквеста Миши (слайдер)
+//     const { results } = await moviesList.fetchImages();
+
+//     const markup = renderMarkupCard(results);
+
     let data = null;
     moviesList.searchQuery = document.querySelector('#search').value;
     if (!moviesList.searchQuery) data = await moviesList.fetchImages();
     else data = await moviesList.fetchImagesByQuery();
     console.log(data.results);
     const markup = renderMarkupCard(data.results);
+
     refs.photosContainer.insertAdjacentHTML('beforeend', markup);
   } catch (error) {
     console.log(error);

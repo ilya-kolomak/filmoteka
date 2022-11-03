@@ -12,3 +12,5 @@ import './js/btn-up';
 import './js/loader';
 import './js/slider';
 import './js/trailer';
+// import './js/trailerForModal';
+// import './js/getGenres';
