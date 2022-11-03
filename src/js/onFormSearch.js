@@ -13,10 +13,10 @@ async function onSearch(e) {
   const query = e.target.searchQuery.value.trim().toLowerCase();
   if (!query) {
     refs.alarm.classList.remove('is-hidden');
+    refs.alarm.textContent = 'Please enter something to search!'
     return;
   }
   imageApiService.searchQuery = query;
-  clearPage();
   try {
     const { results, total_results } =
     await imageApiService.fetchImagesByQuery();
@@ -24,9 +24,10 @@ async function onSearch(e) {
     if(results.length === 0) {
      refs.alarm.textContent = 'Nothing was found for your request!';
       refs.alarm.classList.remove('is-hidden');
+      return
     }
 
-
+    clearPage();
     const markup = renderMarkupCard(results);
     photosContainer.insertAdjacentHTML('beforeend', markup);
     clearPagination(total_results);
