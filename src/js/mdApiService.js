@@ -5,6 +5,8 @@ export default class ImageApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
+    // this.perPage = 20;
+    // this.totalPages = 0;
   }
   async fetchImages() {
     try {
@@ -93,11 +95,8 @@ export default class ImageApiService {
     this.searchQuery = newQuery;
   }
 
-  // get searchQuery() {
-  //   return this.searchQuery;
-  // }
-
-  // set searchQuery(newQuery) {
-  //   this.searchQuery = newQuery;
+  // calculateTotalPages(total_results) {
+  //   this.totalPages = Math.ceil(total_results / this.perPage);
+  //   console.log(this.totalPages);
   // }
 }

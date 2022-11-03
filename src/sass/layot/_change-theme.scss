@@ -60,7 +60,11 @@
 }
 
 .checkbox {
-  position: relative;
+  display: none;
+  @include tablet {
+    position: relative;
+    display: block;
+  }
 }
 
 span.material-icons {
