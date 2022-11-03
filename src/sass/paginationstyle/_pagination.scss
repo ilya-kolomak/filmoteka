@@ -41,7 +41,9 @@
   }
 }
 
-a.tui-page-btn.tui- {
+a.tui-page-btn.tui-,
+.tui-page-btn.tui-is-disabled.tui-first,
+.tui-page-btn.tui-is-disabled.tui-prev {
   @media screen and (max-width: 767px) {
     display: none !important;
   }
