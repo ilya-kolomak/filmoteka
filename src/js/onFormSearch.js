@@ -16,8 +16,6 @@ async function onSearch(e) {
     return;
   }
   imageApiService.searchQuery = query;
-
-  console.log('imageApiService :>> ', imageApiService.page);
   clearPage();
   try {
     const { results, total_results } =

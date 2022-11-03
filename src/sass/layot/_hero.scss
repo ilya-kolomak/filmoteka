@@ -46,11 +46,10 @@
   height: 440px;
   background-color: transparent;
   transition: transform 250ms ease-in-out;
-  &:not(:last-child) {
+  // &:not(:last-child) {
     @media screen and (max-width: 767px) {
       margin-bottom: 25px;
     }
-  }
   @media screen and (min-width: 768px) {
     height: 495px;
     width: calc((100% - 2 * 44px) / 2);

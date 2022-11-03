@@ -60,7 +60,13 @@
 .logo-link {
   display: flex;
   align-items: center;
+  margin-right: 45px;
+  @include tablet {
+  margin-right: 295px;
+  }
+  @include desktop {
   margin-right: 750px;
+  }
 }
 .header-logo {
   fill: $white;
@@ -122,7 +128,10 @@ nav {
 }
 
 .pages-item:not(:last-child) {
-  margin-right: 40px;
+  margin-right: 20px;
+  @include tablet {
+    margin-right: 40px;
+  }
 }
 
 .pages-link {
