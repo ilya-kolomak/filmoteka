@@ -44,7 +44,8 @@ async function rednerCard() {
     moviesList.searchQuery = document.querySelector('#search').value;
     if (!moviesList.searchQuery) data = await moviesList.fetchImages();
     else data = await moviesList.fetchImagesByQuery();
-    console.log(data.results);
+    // console.log(data.total_results);
+    // moviesList.calculateTotalPages(data.total_results);
     const markup = renderMarkupCard(data.results);
 
     refs.photosContainer.insertAdjacentHTML('beforeend', markup);

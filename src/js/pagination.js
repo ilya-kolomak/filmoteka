@@ -1,7 +1,5 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-// import ImageApiService from './mdApiService';
-import sprite from '../images/arrow.svg';
 
 const paginationContainer = document.querySelector('.tui-pagination');
 
