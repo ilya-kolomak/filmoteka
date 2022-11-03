@@ -13,16 +13,6 @@ function createTrailerLink(el) {
   );
 }
 
-export function createTrailerLinkForModal(el) {
-  const btnForTrailer = document.querySelectorAll('.btn-youtube');
-  console.log(btnForTrailer);
-  btnForTrailer.forEach(el =>
-    el.addEventListener('click', e => {
-      drawModalForTrailler(e.target.dataset.id);
-    })
-  );
-}
-
 function drawModalForTrailler(id) {
   imageApiService
     .fetchVideo(id)
