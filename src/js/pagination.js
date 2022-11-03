@@ -6,7 +6,7 @@ import sprite from '../images/arrow.svg';
 const paginationContainer = document.querySelector('.tui-pagination');
 
 const options = {
-  totalItems: 1000,
+  totalItems: 10000,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -33,16 +33,12 @@ const options = {
 };
 
 let pagination = null;
+
 const createPagination = () => {
   if (!pagination) {
     pagination = new Pagination(paginationContainer, options);
   }
   return pagination;
 };
-
-// const createPagination = () => {
-//   const pagination = new Pagination(paginationContainer, options);
-//   return pagination;
-// };
 
 export default createPagination;

@@ -14,6 +14,13 @@
         <li class="pages-item">
           <a href="./my-library.html" class="pages-link">my library</a>
         </li>
+        <li class="pages-item">
+          <div class="checkbox">
+            <input type="checkbox" class="input_checkbox" id="input_checkbox" />
+            <label for="input_checkbox" class="label_checkbox"></label>
+            <span class="material-icons">wb_sunny</span>
+          </div>
+        </li>
       </ul>
     </nav>
     <form class="search-form js-search-form">
@@ -22,6 +29,7 @@
         type="text"
         name="searchQuery"
         placeholder="Movie search"
+        autocomplete="off"
       />
       <button type="submit" class="search-btn js-search-btn">
         <svg class="search-icon" width="12" heigh="12">

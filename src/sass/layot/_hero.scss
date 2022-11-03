@@ -3,71 +3,69 @@
 //   // height: 100vh;
 // }
 .hero-container {
-    width: 100%;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-   
-  
-    @media screen and (min-width: 320px) {
-      width: 320px;
-    }
-  
-    @media screen and (min-width: 768px) {
-      width: 768px;
-      margin: 0 auto;
-      padding-top: 43px;
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-  
-    @media screen and (min-width: 1200px) {
-        padding-top: 52px;  
-      width: 1200px;
-      padding-left: 24px;
-      padding-right: 24px;;
-    }
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media screen and (min-width: 320px) {
+    width: 320px;
   }
 
-.hero-list {
-    width: 100%;
-    margin: 0;
-    padding-left:0;
-    list-style: none;
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    margin: 0 auto;
+    padding-top: 43px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1200px) {
+    padding-top: 52px;
+    width: 1200px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.hero-list {
+  width: 100%;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+
+  @media screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-   
+  }
 }
-}  
 .hero-item {
-    list-style: none;
-    margin-top: 20px;
-    height: 440px;
-    background-color: transparent;
-    transition: transform 250ms ease-in-out;
-    &:not(:last-child) {
-        @media screen and (max-width: 767px){
-                margin-bottom: 25px;        
+  list-style: none;
+  margin-top: 20px;
+  height: 440px;
+  background-color: transparent;
+  transition: transform 250ms ease-in-out;
+  &:not(:last-child) {
+    @media screen and (max-width: 767px) {
+      margin-bottom: 25px;
     }
-}
-@media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 768px) {
     height: 495px;
-    width: calc((100% - 2 * 44px)/2);
+    width: calc((100% - 2 * 44px) / 2);
     margin: 22px;
-    }
-    @media screen and (min-width: 1200px) {
-        height: 634px;
-        height: auto;
-        width:  calc((100% - 6 * 8px)/3);
-        margin: 8px;
-      }
+  }
+  @media screen and (min-width: 1200px) {
+    height: 634px;
+    height: auto;
+    width: calc((100% - 6 * 8px) / 3);
+    margin: 8px;
+  }
 }
 .hero-item:hover {
-    cursor: pointer;
-    transform: scale(1.05);  
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .hero-item .overlay-btn-youtube-text {
@@ -105,57 +103,50 @@
 //   cursor: pointer;
 // }
 
-
-
-
 .hero-thumb {
   width: 100%;
-   
 }
 .img-item {
-    display: block;
-    width: 100%;
-    border-radius: 5px;
+  display: block;
+  width: 100%;
+  border-radius: 5px;
   //  height: 402px;
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     // height: 455px;
     // width: 336px;
-   
-}
-@media screen and (min-width: 1200px) {
-  height: auto;
-}
-
+  }
+  @media screen and (min-width: 1200px) {
+    height: auto;
+  }
 }
 .hero-info {
-    margin-top: 5px;
-    padding-left: 10px;
-    @media screen and (min-width: 768px) {
-        margin-top: 8px;
-    }
-    @media screen and (min-width: 1200px) {
-        margin-top: 12px;
-      }
+  margin-top: 5px;
+  padding-left: 10px;
+  @media screen and (min-width: 768px) {
+    margin-top: 8px;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-top: 12px;
+  }
 }
 .film-title {
-    font-weight: 500;
-    color: #ffffff;
-font-size: 12px;
-line-height: 16px;
-@media screen and (min-width: 1200px) {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  @media screen and (min-width: 1200px) {
     font-size: 20px;
-line-height: 24px;
+    line-height: 24px;
   }
 }
 .film-info {
-    display: inline-block;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 14px;
-    color: #f3b909;
-@media screen and (min-width: 1200px) {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #f3b909;
+  @media screen and (min-width: 1200px) {
     font-size: 20px;
-line-height: 24px;
+    line-height: 24px;
   }
 }
 

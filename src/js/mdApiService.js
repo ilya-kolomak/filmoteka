@@ -20,7 +20,7 @@ export default class ImageApiService {
   async fetchImagesByQuery() {
     try {
       const respons = await axios.get(
-        `https:/${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`
+        `https://${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`
       );
       return respons.data;
     } catch (error) {}
@@ -92,4 +92,12 @@ export default class ImageApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+
+  // get searchQuery() {
+  //   return this.searchQuery;
+  // }
+
+  // set searchQuery(newQuery) {
+  //   this.searchQuery = newQuery;
+  // }
 }
