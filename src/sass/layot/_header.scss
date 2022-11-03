@@ -56,6 +56,7 @@
 .logo-link {
   display: flex;
   align-items: center;
+  margin-right: 750px;
 }
 .header-logo {
   fill: $white;
@@ -89,7 +90,6 @@ nav {
 
 .pages-list {
   display: flex;
-  margin-left: auto;
 }
 
 .pages-item:not(:last-child) {

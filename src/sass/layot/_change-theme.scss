@@ -56,7 +56,12 @@
 
 .dark {
   color: white;
-  background-color: rgb(41, 40, 40);
+  background: linear-gradient(
+    0deg,
+    rgba(164, 107, 112, 1) 36%,
+    rgba(121, 38, 45, 1) 68%,
+    rgba(43, 47, 56, 1) 90%
+  );
 }
 
 .checkbox {
