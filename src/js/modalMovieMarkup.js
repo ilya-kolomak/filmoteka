@@ -2,6 +2,9 @@ import * as basicLightbox from 'basiclightbox';
 import '../../node_modules/basiclightbox/src/styles/main.scss';
 import { loadedStoredData } from './movieLocalStorage';
 import { removeFromList, addToList } from './my-library-btn';
+import ImageApiService from './mdApiService';
+
+const imageApiService = new ImageApiService();
 
 let watchedIds = [];
 let queueIds = [];
@@ -54,9 +57,15 @@ export function renderModal(movieEl) {
   const queueBthText = isQueued ? 'Remove from queue' : 'Add to queue';
 
   let modalRenderHTML = basicLightbox.create(
-    ` 
-    </div>
+    `
         <div class="modal-main modal-container">
+           <div class="btn-id">
+           <button data-id='${id}' class="btn-youtube">
+              <div class="overlay-btn-youtube-text" data-id='${id}'>
+                 <h2 class="btn-youtube-text" data-id='${id}'>Movie Trailer</h2>
+              </div>
+           </button>
+           </div>  
          <button type="button" class="modal-main__btn-close">
            <svg width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute"><path d="m8 8 14 14M8 22 22 8" stroke="#000" stroke-width="2"/></svg>
            </button>
@@ -109,7 +118,7 @@ export function renderModal(movieEl) {
           .element()
           .querySelector('.modal-main__btn-close').onclick =
           modalRenderHTML.close;
-        
+
         document.onkeydown = function (evt) {
           evt = evt || window.event;
           let isEscape = false;
@@ -162,4 +171,50 @@ export function renderModal(movieEl) {
       addToList(id);
     }
   });
+  const trailerBtnForModal = document.querySelectorAll('.btn-youtube');
+  console.log(trailerBtnForModal);
+
+  trailerBtnForModal.forEach(el =>
+    el.addEventListener('click', e => {
+      drawModal(e.target.dataset.id);
+    })
+  );
+}
+function drawModal(id) {
+  imageApiService
+    .fetchVideo(id)
+    .then(data => {
+      const id = data.results[0].key;
+      const instance = basicLightbox.create(`
+  <iframe class="responsive" width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  `);
+
+      instance.show();
+      modalClBtTrailer(instance);
+      return instance;
+    })
+    .catch(() => {
+      const instance = basicLightbox.create(`
+    <iframe class="responsive" width="560" height="315" src='http://www.youtube.com/embed/zwBpUdZ0lrQ' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      `);
+
+      instance.show();
+      modalClBtTrailer(instance);
+    });
+}
+function modalClBtTrailer(instance) {
+  const modalBox = document.querySelector('.basicLightbox--iframe');
+  modalBox.insertAdjacentHTML(
+    'afterbegin',
+    `<button
+          type="button"
+          class="lightbox__button"
+          data-action="close-lightbox"
+          ></button>
+      `
+  );
+  const modalCloseBtn = document.querySelector(
+    '[data-action="close-lightbox"]'
+  );
+  modalCloseBtn.addEventListener('click', () => instance.close());
 }
