@@ -34,11 +34,10 @@ async function renderPagination() {
 async function rednerCard() {
   clearPage();
   try {
-
     // деструктеризация с последнего реквеста Миши (слайдер)
-//     const { results } = await moviesList.fetchImages();
+    //     const { results } = await moviesList.fetchImages();
 
-//     const markup = renderMarkupCard(results);
+    //     const markup = renderMarkupCard(results);
 
     let data = null;
     moviesList.searchQuery = document.querySelector('#search').value;
@@ -57,6 +56,12 @@ async function rednerCard() {
 function clearPage() {
   refs.photosContainer.innerHTML = '';
 }
+
+// export function clearPagination() {
+//   const pagination = createPagination();
+//   pagination.movePageTo(1);
+//   // pagination.reset(1);
+// }
 
 function localPagination() {
   const savePagination = localStorage.getItem('pagination');
