@@ -164,7 +164,7 @@ export function renderModal(movieEl) {
       queueIds.push(id);
       event.target.textContent = 'remove from queue';
 
-      localStorage.setItem('queue', JSON.stringify(queueMoviesIds));
+      localStorage.setItem('queue', JSON.stringify(queueIds));
 
       localStorage.setItem('queue', JSON.stringify(queueIds));
 
