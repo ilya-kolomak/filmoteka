@@ -2,8 +2,6 @@ import ImageApiService from './mdApiService';
 import { getSelectedMovie } from './modalMovieMarkup';
 
 // import { getGenresForCard } from './getGenres';
-=======
-
 
 let photosContainer = document.querySelector('.js-photos-container');
 const imageApiService = new ImageApiService();
@@ -11,9 +9,7 @@ const imageApiService = new ImageApiService();
 export default function renderMarkupCard(results) {
   getSelectedMovie(photosContainer, results);
 
-
   imageApiService.fetchImages();
-
 
   return results
     .map(
