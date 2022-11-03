@@ -57,11 +57,11 @@ function clearPage() {
   refs.photosContainer.innerHTML = '';
 }
 
-// export function clearPagination() {
-//   const pagination = createPagination();
-//   pagination.movePageTo(1);
-//   // pagination.reset(1);
-// }
+export function clearPagination(total_results) {
+  const pagination = createPagination();
+  pagination.movePageTo(1);
+  pagination.reset(total_results);
+}
 
 function localPagination() {
   const savePagination = localStorage.getItem('pagination');
