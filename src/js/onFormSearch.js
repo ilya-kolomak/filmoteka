@@ -10,27 +10,24 @@ refs.form && refs.form.addEventListener('submit', onSearch);
 async function onSearch(e) {
   e.preventDefault();
 
-  // const {
-  //   elements: { searchQuery },
-  // } = e.currentTarget;
-
   const query = e.target.searchQuery.value.trim().toLowerCase();
   if (!query) {
     refs.alarm.classList.remove('is-hidden');
     return;
   }
-
   imageApiService.searchQuery = query;
-  // console.log('imageApiService :>> ', imageApiService);
+
   console.log('imageApiService :>> ', imageApiService.page);
   clearPage();
   try {
     const { results, total_results } =
     await imageApiService.fetchImagesByQuery();
+    
+    if(results.length === 0) {
+     refs.alarm.textContent = 'Nothing was found for your request!';
+      refs.alarm.classList.remove('is-hidden');
+    }
 
-   if(results.length === 0) {
-    refs.notification.classList.remove('is-hidden');
-   }
 
     const markup = renderMarkupCard(results);
     photosContainer.insertAdjacentHTML('beforeend', markup);
@@ -45,5 +42,4 @@ function clearPage() {
   imageApiService.resetPage();
   photosContainer.innerHTML = '';
   refs.alarm.classList.add('is-hidden');
-  refs.notification.classList.add('is-hidden');
 }
