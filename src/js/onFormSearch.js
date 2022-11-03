@@ -25,12 +25,13 @@ async function onSearch(e) {
   console.log('imageApiService :>> ', imageApiService.page);
   clearPage();
   try {
-    const { results } = await imageApiService.fetchImagesByQuery();
+    const { results, total_results } =
+      await imageApiService.fetchImagesByQuery();
     console.log(results);
+    console.log(total_results);
     const markup = renderMarkupCard(results);
     photosContainer.insertAdjacentHTML('beforeend', markup);
-    const pagination = createPagination();
-    pagination.reset(1);
+    clearPagination(total_results);
     return results;
   } catch (error) {}
 }
