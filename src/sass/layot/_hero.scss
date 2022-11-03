@@ -28,6 +28,16 @@
   }
 }
 
+.notification {
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+.notification.is-hidden {
+  display: none;
+}
+
 .hero-list {
   width: 100%;
   margin: 0;

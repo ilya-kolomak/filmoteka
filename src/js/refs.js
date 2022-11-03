@@ -2,6 +2,7 @@ export const refs = {
   form: document.querySelector('.js-search-form'),
   searchBtn: document.querySelector('.js-search-btn'),
   alarm: document.querySelector('.alarm-text'),
+  notification: document.querySelector('.notification'),
   btnOnModalTeam: document.querySelector('.team-link'),
   modalBackdrop: document.querySelector('.modal-backdrop'),
   photosContainer: document.querySelector('.js-photos-container'),
