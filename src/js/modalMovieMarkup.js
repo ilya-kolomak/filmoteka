@@ -20,7 +20,6 @@ export function getSelectedMovie(movieContainer, results) {
     }
     const { id } = liElem.dataset;
     const selectedMovie = results.find(result => result.id === Number(id));
-
     renderModal(selectedMovie);
   }
 
@@ -55,7 +54,8 @@ export function renderModal(movieEl) {
   const queueBthText = isQueued ? 'Remove from queue' : 'Add to queue';
 
   let modalRenderHTML = basicLightbox.create(
-    `    
+    ` 
+    </div>
         <div class="modal-main modal-container">
          <button type="button" class="modal-main__btn-close">
            <svg width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute"><path d="m8 8 14 14M8 22 22 8" stroke="#000" stroke-width="2"/></svg>
@@ -113,7 +113,6 @@ export function renderModal(movieEl) {
     }
   );
   modalRenderHTML.show();
-
   document.querySelector('.add__watched').addEventListener('click', event => {
     console.log('clicked');
     if (isWatchedMovie(id)) {
@@ -142,7 +141,7 @@ export function renderModal(movieEl) {
     } else {
       queueMoviesIds.push(id);
       event.target.textContent = 'remove from queue';
-      
+
       localStorage.setItem('queue', JSON.stringify(queueMoviesIds));
       addToList(id);
     }

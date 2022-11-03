@@ -66,3 +66,4 @@ export function getGenresForCard(array) {
     console.log(genre_names);
   }
 }
+getGenresForCard();

@@ -1,12 +1,12 @@
 import createPagination from './pagination';
 import ImageApiService from './mdApiService';
 import renderMarkupCard from './hero';
+
 import { refs } from './refs';
 
 if (refs.isLibraryPage) {
   return;
 }
-
 
 const moviesList = new ImageApiService();
 moviesList.fetchGenres();
@@ -25,7 +25,7 @@ async function renderPagination() {
 
       localStorage.setItem('pagination', currentPage);
 
-moviesList.page = currentPage;
+      moviesList.page = currentPage;
       rednerCard(currentPage);
     });
   } catch (error) {}
@@ -35,6 +35,7 @@ async function rednerCard() {
   clearPage();
   try {
     const { results } = await moviesList.fetchImages();
+
     const markup = renderMarkupCard(results);
     refs.photosContainer.insertAdjacentHTML('beforeend', markup);
   } catch (error) {

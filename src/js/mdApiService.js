@@ -35,18 +35,18 @@ export default class ImageApiService {
       return response.genres;
     } catch (error) {}
   }
-  // insertGenresToMovieObj() {
-  //   return this.fetchImages().then(data => {
-  //     return this.fetchGenres().then(genresList => {
-  //       return data.map(movie => ({
-  //         ...movie,
-  //         genres: movie.genre_ids
-  //           .map(id => genresList.filter(el => el.id === id))
-  //           .flat(),
-  //       }));
-  //     });
-  //   });
-  // }
+  insertGenresToMovieObj() {
+    return this.fetchImages().then(data => {
+      return this.fetchGenres().then(genresList => {
+        return data.map(movie => ({
+          ...movie,
+          genres: movie.genre_ids
+            .map(id => genresList.filter(el => el.id === id))
+            .flat(),
+        }));
+      });
+    });
+  }
 
   async fetchVideo(id) {
     try {
@@ -55,7 +55,7 @@ export default class ImageApiService {
       );
 
       // console.log(response.data.id);
-      return response.data.id;
+      return response.data;
     } catch (error) {}
   }
 
@@ -71,7 +71,7 @@ export default class ImageApiService {
   }
 
   async fetchImageById(id) {
-    const extarnalId = await this.getMovieExtarnalId(id)
+    const extarnalId = await this.getMovieExtarnalId(id);
     try {
       const response = await axios.get(
         `https://${BASE_URL}find/${extarnalId}?api_key=${API_KEY}&language=en-US&external_source=imdb_id`

@@ -25,10 +25,8 @@ async function renderSliderFilms(results) {
     const { results } = await imageApiService.fetchImages();
     const markup = cardsForSlider(results);
     sliderContainer.innerHTML = markup;
-    const video = trailer.createTrailerLink(
-      document.querySelectorAll('.btn-youtube-slider')
-    );
-    // console.log(video);
-    return video;
+    trailer.createTrailerLink(document.querySelectorAll('.btn-youtube-slider'));
+
+    // return video;
   } catch (error) {}
 }

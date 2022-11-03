@@ -4,19 +4,9 @@ import ImageApiService from './mdApiService';
 const imageApiService = new ImageApiService();
 
 function createTrailerLink(el) {
-  const trailerBtn = document.querySelectorAll('.btn-youtube-slider');
-  console.log(trailerBtn);
-  trailerBtn.forEach(el =>
-    el.addEventListener('click', e => {
-      drawModalForTrailler(e.target.dataset.id);
-    })
-  );
-}
-
-export function createTrailerLinkForModal(el) {
-  const btnForTrailer = document.querySelectorAll('.btn-youtube');
-  console.log(btnForTrailer);
-  btnForTrailer.forEach(el =>
+  const trailerBtnForModal = document.querySelectorAll('.btn-youtube');
+  console.log(trailerBtnForModal);
+  trailerBtnForModal.forEach(el =>
     el.addEventListener('click', e => {
       drawModalForTrailler(e.target.dataset.id);
     })
@@ -31,7 +21,6 @@ function drawModalForTrailler(id) {
       const instance = basicLightbox.create(`
 <iframe class="responsive" width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `);
-
       instance.show();
       modalClBtTrailer(instance);
     })
