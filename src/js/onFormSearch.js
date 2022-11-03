@@ -12,23 +12,31 @@ async function onSearch(e) {
 
   const query = e.target.searchQuery.value.trim().toLowerCase();
   if (!query) {
+    refs.alarm.classList.remove('is-hidden');
     return;
   }
   imageApiService.searchQuery = query;
   clearPage();
   try {
     const { results, total_results } =
-      await imageApiService.fetchImagesByQuery();
-    console.log(results);
-    console.log(total_results);
+    await imageApiService.fetchImagesByQuery();
+
+   if(results.length === 0) {
+    refs.alarm.classList.remove('is-hidden');
+    refs.alarm.textContent = "Nothing was found for your request.";
+   }
+
     const markup = renderMarkupCard(results);
     photosContainer.insertAdjacentHTML('beforeend', markup);
     clearPagination(total_results);
     return results;
-  } catch (error) {}
+  } catch (error) {
+    console.error("Something comes wrong!");
+  }
 }
 
 function clearPage() {
   imageApiService.resetPage();
   photosContainer.innerHTML = '';
+  refs.alarm.classList.add('is-hidden');
 }
