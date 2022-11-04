@@ -73,6 +73,9 @@
 }
 
 span.material-icons {
+  display: none;
+  @include desktop {
+   display: block;
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
@@ -84,4 +87,5 @@ span.material-icons {
   top: -1px;
   left: -14px;
   color: orange;
+  }
 }
