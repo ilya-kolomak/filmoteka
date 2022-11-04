@@ -13,3 +13,6 @@ import './js/loader';
 import './js/slider';
 import './js/trailer';
 // import './js/getGenres';
+import './js/dreamTeam-info.json';
+import './js/helpers';
+import './js/changesGenresIdToName';

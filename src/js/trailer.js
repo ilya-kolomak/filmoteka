@@ -5,7 +5,7 @@ const imageApiService = new ImageApiService();
 
 function createTrailerLink(el) {
   const trailerBtn = document.querySelectorAll('.btn-youtube-slider');
-  console.log(trailerBtn);
+
   trailerBtn.forEach(el =>
     el.addEventListener('click', e => {
       drawModalForTrailler(e.target.dataset.id);

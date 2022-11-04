@@ -1,0 +1,18 @@
+
+{{#each this}}
+<li class="hero-item" data-id="{{id}}">
+    <div class="hero-thumb">
+ <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}"
+alt="{{title}}" loading="lazy" class="img-item" />
+    </div>
+ <div class="hero-info">
+<p class="film-title">{{original_title}}</p>
+
+ <p class="film-info">{{genre_ids}} 
+{{#each genres}} {{name}} {{/each}}
+|
+ </p>
+<p class="film-info">{{yearFixed release_date}}</p>
+</div>
+  </li>
+{{/each}}

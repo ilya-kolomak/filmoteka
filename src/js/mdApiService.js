@@ -33,21 +33,9 @@ export default class ImageApiService {
       const response = await axios.get(
         `https://${BASE_URL}genre/movie/list?api_key=${API_KEY}&language=en-US`
       );
-      console.log(response);
-      return response.genres;
+      // console.log(response);
+      return response.data;
     } catch (error) {}
-  }
-  insertGenresToMovieObj() {
-    return this.fetchImages().then(data => {
-      return this.fetchGenres().then(genresList => {
-        return data.map(movie => ({
-          ...movie,
-          genres: movie.genre_ids
-            .map(id => genresList.filter(el => el.id === id))
-            .flat(),
-        }));
-      });
-    });
   }
 
   async fetchVideo(id) {
