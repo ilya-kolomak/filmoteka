@@ -33,6 +33,7 @@ async function renderPagination() {
 
 async function rednerCard() {
   clearPage();
+  // topFunction();
   try {
     // деструктеризация с последнего реквеста Миши (слайдер)
     //     const { results } = await moviesList.fetchImages();
@@ -72,3 +73,10 @@ function localPagination() {
     pagination.movePageTo(savePagination);
   }
 }
+
+// function topFunction() {
+//   window.scrollTo({
+//     top: 0,
+//     behavior: 'smooth',
+//   });
+// }

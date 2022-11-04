@@ -1,5 +1,6 @@
 import ImageApiService from './mdApiService';
 import { getSelectedMovie } from './modalMovieMarkup';
+import { getGenders } from './getGenresbyId';
 
 // import { getGenresForCard } from './getGenres';
 
@@ -15,6 +16,8 @@ export default function renderMarkupCard(results) {
     .map(
       ({ poster_path, title, original_title, release_date, genre_ids, id }) => {
         console.log('release_date :>> ', release_date);
+        const movieGenderesList = getGenders(genre_ids).join(', ');
+        console.log(movieGenderesList);
         return ` <li class="hero-item" data-id="${id}">
    
     <div class="hero-thumb">
@@ -24,7 +27,7 @@ export default function renderMarkupCard(results) {
     </div>
     <div class="hero-info">
       <p class="film-title">${original_title}</p>
-       <p class="film-info">${genre_ids}|</p>
+       <p class="film-info">${movieGenderesList}|</p>
       <p class="film-info">${release_date ? release_date.split('-')[0] : ''}</p>
     </div>
    </li>`;

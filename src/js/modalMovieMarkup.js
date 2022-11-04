@@ -3,6 +3,7 @@ import '../../node_modules/basiclightbox/src/styles/main.scss';
 import { loadedStoredData } from './movieLocalStorage';
 import { removeFromList, addToList } from './my-library-btn';
 import ImageApiService from './mdApiService';
+import { getGenders } from './getGenresbyId';
 
 const imageApiService = new ImageApiService();
 
@@ -51,10 +52,14 @@ export function renderModal(movieEl) {
     vote_average,
   } = movieEl;
 
+  console.log(movieEl);
+
   const isWatched = isWatchedMovie(id);
   const isQueued = isQueueMovie(id);
   const buttonText = isWatched ? 'Remove from watched' : 'Add to watched';
   const queueBthText = isQueued ? 'Remove from queue' : 'Add to queue';
+  // const movieGenderesList = getGenders(genres).join(', ');
+  // console.log(movieGenderesList);
 
   let modalRenderHTML = basicLightbox.create(
     `
