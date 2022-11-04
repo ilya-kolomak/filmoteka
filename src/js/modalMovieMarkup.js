@@ -43,7 +43,7 @@ export function renderModal(movieEl) {
   const {
     poster_path,
     overview,
-    genres,
+    genre_ids,
     id,
     original_title,
     title,
@@ -58,8 +58,7 @@ export function renderModal(movieEl) {
   const isQueued = isQueueMovie(id);
   const buttonText = isWatched ? 'Remove from watched' : 'Add to watched';
   const queueBthText = isQueued ? 'Remove from queue' : 'Add to queue';
-  // const movieGenderesList = getGenders(genres).join(', ');
-  // console.log(movieGenderesList);
+  const movieGenderesList = getGenders(genre_ids).join(', ');
 
   let modalRenderHTML = basicLightbox.create(
     `
@@ -103,7 +102,7 @@ export function renderModal(movieEl) {
                         class="modal__about--text--popularity" data-digits-counter>${popularity}</span>
                 <p class="about-movie__title--movie">Original Title<span class="modal__about--text--original--title">A
                         ${original_title}</span>
-                <p class="about-movie__title--movie">Genre<span class="modal__about--text--genre">${genres}</span>
+                <p class="about-movie__title--movie">Genre<span class="modal__about--text--genre">${movieGenderesList}</span>
                 </p>
                 </p>
                 <p class="about__movie--text">About</p>
