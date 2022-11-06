@@ -37,19 +37,6 @@ export default class ImageApiService {
       return response.genres;
     } catch (error) {}
   }
-  insertGenresToMovieObj() {
-    return this.fetchImages().then(data => {
-      return this.fetchGenres().then(genresList => {
-        return data.map(movie => ({
-          ...movie,
-          genres: movie.genre_ids
-            .map(id => genresList.filter(el => el.id === id))
-            .flat(),
-        }));
-      });
-    });
-  }
-
   async fetchVideo(id) {
     try {
       const response = await axios.get(
