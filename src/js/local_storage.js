@@ -1,6 +1,7 @@
 import { refs } from './refs';
 import { currentLibrary } from './my-library-btn';
 import createPagination from './pagination';
+import { enableLoader, disableLoader } from './loader';
 
 //ДОДАТИ ДО КЛЮЧА "WATCHED" В LOCAL STORAGE
 // Передано змінну style
