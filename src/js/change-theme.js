@@ -1,3 +1,9 @@
+import { refs } from './refs';
+
+if (refs.isLibraryPage) {
+  return;
+}
+
 const checkbox = document.querySelector('.input_checkbox');
 checkbox.addEventListener('change', event => {
   //   event.preventDefault();
