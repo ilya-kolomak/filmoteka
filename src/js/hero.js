@@ -1,25 +1,25 @@
-// import ImageApiService from './mdApiService';
+import ImageApiService from './mdApiService';
 import { getSelectedMovie } from './modalMovieMarkup';
-import { getGenresForCard } from './getGenres';
+import { getGenders } from './getGenresbyId';
+
+// import { getGenresForCard } from './getGenres';
 
 let photosContainer = document.querySelector('.js-photos-container');
-// const imageApiService = new ImageApiService();
+const imageApiService = new ImageApiService();
 
 export default function renderMarkupCard(results) {
-
   getSelectedMovie(photosContainer, results);
-  
-  // imageApiService.fetchImages();
+
+  imageApiService.fetchImages();
+
   return results
     .map(
       ({ poster_path, title, original_title, release_date, genre_ids, id }) => {
+        console.log('release_date :>> ', release_date);
+        const movieGenderesList = getGenders(genre_ids).join(', ');
+        console.log(movieGenderesList);
         return ` <li class="hero-item" data-id="${id}">
-      <div class="btn-id">
-      <button data-id='${id}' class="btn-youtube">
-         <div class="overlay-btn-youtube-text" data-id='${id}'>
-            <h2 class="btn-youtube-text" data-id='${id}'>Movie Trailer</h2>
-         </div>
-      </button>
+   
     <div class="hero-thumb">
     <img
      src="https://image.tmdb.org/t/p/w500/${poster_path}"
@@ -27,8 +27,8 @@ export default function renderMarkupCard(results) {
     </div>
     <div class="hero-info">
       <p class="film-title">${original_title}</p>
-       <p class="film-info">${genre_ids}|</p>
-      <p class="film-info">${release_date.split('-')[0]}</p>
+       <p class="film-info">${movieGenderesList}|</p>
+      <p class="film-info">${release_date ? release_date.split('-')[0] : ''}</p>
     </div>
    </li>`;
       }

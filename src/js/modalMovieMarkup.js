@@ -2,15 +2,19 @@ import * as basicLightbox from 'basiclightbox';
 import '../../node_modules/basiclightbox/src/styles/main.scss';
 import { loadedStoredData } from './movieLocalStorage';
 import { removeFromList, addToList } from './my-library-btn';
+import ImageApiService from './mdApiService';
+import { getGenders } from './getGenresbyId';
 
-let watchedMoviesIds = [];
-let queueMoviesIds = [];
+const imageApiService = new ImageApiService();
+
+let watchedIds = [];
+let queueIds = [];
 
 export function getSelectedMovie(movieContainer, results) {
-  const loadedData = loadedStoredData();
+  const { watchedMoviesIds, queueMoviesIds } = loadedStoredData();
 
-  watchedMoviesIds = loadedData.watchedMoviesIds;
-  queueMoviesIds = loadedData.queueMoviesIds;
+  if (watchedMoviesIds) watchedIds = watchedMoviesIds;
+  if (queueMoviesIds) queueIds = queueMoviesIds;
 
   function handeMovieClick({ target }) {
     const liElem = target.closest('.hero-item');
@@ -20,7 +24,6 @@ export function getSelectedMovie(movieContainer, results) {
     }
     const { id } = liElem.dataset;
     const selectedMovie = results.find(result => result.id === Number(id));
-
     renderModal(selectedMovie);
   }
 
@@ -29,18 +32,18 @@ export function getSelectedMovie(movieContainer, results) {
 }
 
 function isWatchedMovie(id) {
-  return watchedMoviesIds.find(currId => currId === id);
+  return watchedIds.find(currId => currId === id);
 }
 
 function isQueueMovie(id) {
-  return queueMoviesIds.find(currId => currId === id);
+  return queueIds.find(currId => currId === id);
 }
 
 export function renderModal(movieEl) {
   const {
     poster_path,
     overview,
-    genres,
+    genre_ids,
     id,
     original_title,
     title,
@@ -49,14 +52,24 @@ export function renderModal(movieEl) {
     vote_average,
   } = movieEl;
 
+  console.log(movieEl);
+
   const isWatched = isWatchedMovie(id);
   const isQueued = isQueueMovie(id);
   const buttonText = isWatched ? 'Remove from watched' : 'Add to watched';
   const queueBthText = isQueued ? 'Remove from queue' : 'Add to queue';
+  const movieGenderesList = getGenders(genre_ids).join(', ');
 
   let modalRenderHTML = basicLightbox.create(
-    `    
+    `
         <div class="modal-main modal-container">
+           <div class="btn-id">
+           <button data-id='${id}' class="btn-youtube">
+              <div class="overlay-btn-youtube-text" data-id='${id}'>
+                 <h2 class="btn-youtube-text" data-id='${id}'>Movie Trailer</h2>
+              </div>
+           </button>
+           </div>  
          <button type="button" class="modal-main__btn-close">
            <svg width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute"><path d="m8 8 14 14M8 22 22 8" stroke="#000" stroke-width="2"/></svg>
            </button>
@@ -89,7 +102,7 @@ export function renderModal(movieEl) {
                         class="modal__about--text--popularity" data-digits-counter>${popularity}</span>
                 <p class="about-movie__title--movie">Original Title<span class="modal__about--text--original--title">A
                         ${original_title}</span>
-                <p class="about-movie__title--movie">Genre<span class="modal__about--text--genre">${genres}</span>
+                <p class="about-movie__title--movie">Genre<span class="modal__about--text--genre">${movieGenderesList}</span>
                 </p>
                 </p>
                 <p class="about__movie--text">About</p>
@@ -109,9 +122,10 @@ export function renderModal(movieEl) {
           .element()
           .querySelector('.modal-main__btn-close').onclick =
           modalRenderHTML.close;
+
         document.onkeydown = function (evt) {
           evt = evt || window.event;
-          var isEscape = false;
+          let isEscape = false;
           if ('key' in evt) {
             isEscape = evt.key === 'Escape' || evt.key === 'Esc';
           } else {
@@ -125,19 +139,18 @@ export function renderModal(movieEl) {
     }
   );
   modalRenderHTML.show();
-
   document.querySelector('.add__watched').addEventListener('click', event => {
     console.log('clicked');
     if (isWatchedMovie(id)) {
-      watchedMoviesIds = watchedMoviesIds.filter(watchedId => watchedId != id);
+      watchedIds = watchedIds.filter(watchedId => watchedId != id);
       event.target.textContent = 'add to watched';
-      localStorage.setItem('watched', JSON.stringify(watchedMoviesIds));
+      localStorage.setItem('watched', JSON.stringify(watchedIds));
 
       removeFromList(id);
     } else {
-      watchedMoviesIds.push(id);
+      watchedIds.push(id);
       event.target.textContent = 'remove from watched';
-      localStorage.setItem('watched', JSON.stringify(watchedMoviesIds));
+      localStorage.setItem('watched', JSON.stringify(watchedIds));
 
       addToList(id);
     }
@@ -145,18 +158,67 @@ export function renderModal(movieEl) {
 
   document.querySelector('.add__queue').addEventListener('click', event => {
     if (isQueueMovie(id)) {
-      queueMoviesIds = queueMoviesIds.filter(queuedId => queuedId != id);
+      queueIds = queueIds.filter(queuedId => queuedId != id);
       event.target.textContent = 'add to queue';
 
-      localStorage.setItem('queue', JSON.stringify(queueMoviesIds));
+      localStorage.setItem('queue', JSON.stringify(queueIds));
 
       removeFromList(id);
     } else {
-      queueMoviesIds.push(id);
+      queueIds.push(id);
       event.target.textContent = 'remove from queue';
 
-      localStorage.setItem('queue', JSON.stringify(queueMoviesIds));
+      localStorage.setItem('queue', JSON.stringify(queueIds));
+
+      localStorage.setItem('queue', JSON.stringify(queueIds));
+
       addToList(id);
     }
   });
+  const trailerBtnForModal = document.querySelectorAll('.btn-youtube');
+  console.log(trailerBtnForModal);
+
+  trailerBtnForModal.forEach(el =>
+    el.addEventListener('click', e => {
+      drawModal(e.target.dataset.id);
+    })
+  );
+}
+function drawModal(id) {
+  imageApiService
+    .fetchVideo(id)
+    .then(data => {
+      const id = data.results[0].key;
+      const instance = basicLightbox.create(`
+  <iframe class="responsive" width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  `);
+
+      instance.show();
+      modalClBtTrailer(instance);
+      return instance;
+    })
+    .catch(() => {
+      const instance = basicLightbox.create(`
+    <iframe class="responsive" width="560" height="315" src='http://www.youtube.com/embed/zwBpUdZ0lrQ' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      `);
+
+      instance.show();
+      modalClBtTrailer(instance);
+    });
+}
+function modalClBtTrailer(instance) {
+  const modalBox = document.querySelector('.basicLightbox--iframe');
+  modalBox.insertAdjacentHTML(
+    'afterbegin',
+    `<button
+          type="button"
+          class="lightbox__button"
+          data-action="close-lightbox"
+          ></button>
+      `
+  );
+  const modalCloseBtn = document.querySelector(
+    '[data-action="close-lightbox"]'
+  );
+  modalCloseBtn.addEventListener('click', () => instance.close());
 }

@@ -5,6 +5,8 @@ export default class ImageApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
+    this.perPage = 20;
+    this.totalPages = 0;
   }
   async fetchImages() {
     try {
@@ -20,7 +22,7 @@ export default class ImageApiService {
   async fetchImagesByQuery() {
     try {
       const respons = await axios.get(
-        `https:/${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`
+        `https://${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&include_adult=false&query=${this.searchQuery}`
       );
       return respons.data;
     } catch (error) {}
@@ -35,19 +37,6 @@ export default class ImageApiService {
       return response.genres;
     } catch (error) {}
   }
-  // insertGenresToMovieObj() {
-  //   return this.fetchImages().then(data => {
-  //     return this.fetchGenres().then(genresList => {
-  //       return data.map(movie => ({
-  //         ...movie,
-  //         genres: movie.genre_ids
-  //           .map(id => genresList.filter(el => el.id === id))
-  //           .flat(),
-  //       }));
-  //     });
-  //   });
-  // }
-
   async fetchVideo(id) {
     try {
       const response = await axios.get(
@@ -55,7 +44,7 @@ export default class ImageApiService {
       );
 
       // console.log(response.data.id);
-      return response.data.id;
+      return response.data;
     } catch (error) {}
   }
 
@@ -71,7 +60,7 @@ export default class ImageApiService {
   }
 
   async fetchImageById(id) {
-    const extarnalId = await this.getMovieExtarnalId(id)
+    const extarnalId = await this.getMovieExtarnalId(id);
     try {
       const response = await axios.get(
         `https://${BASE_URL}find/${extarnalId}?api_key=${API_KEY}&language=en-US&external_source=imdb_id`
@@ -93,11 +82,8 @@ export default class ImageApiService {
     this.searchQuery = newQuery;
   }
 
-  // get searchQuery() {
-  //   return this.searchQuery;
-  // }
-
-  // set searchQuery(newQuery) {
-  //   this.searchQuery = newQuery;
-  // }
+  calculateTotalPages(total_results) {
+    this.totalPages = Math.ceil(total_results / this.perPage);
+    console.log(this.totalPages);
+  }
 }

@@ -1,5 +1,5 @@
 :root {
-  --backdrop-mobail-modal: #0000008f;
+  --backdrop-modal: #0000008f;
   --background-modal: #ffffff;
   --acent-modal: #ff6b01;
 }
@@ -22,7 +22,7 @@
   pointer-events: all;
   opacity: 1;
   visibility: visible;
-  background-color: var(--backdrop-mobail-modal);
+  background-color: var(--backdrop-modal);
   padding-top: 20px;
   padding-bottom: 38px;
   padding: 20px 10px 38px;
@@ -65,6 +65,7 @@
   top: 8px;
   right: 8px;
   background-color: transparent;
+  color: #ffffff;
   cursor: pointer;
   border: none;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -77,7 +78,17 @@
 
 
 .team-modal {
-  background-color: var(--background-modal);
+
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+
+
+
+
+
+  // background-color: var(--background-modal);
   width: 320px;
   padding: 48px 20px 0px;
   margin-bottom: 50px;
@@ -119,7 +130,6 @@
   margin-bottom: 25px;
   border-radius: 5%;
   &:hover {
-    // background-color: rgba(255, 166, 0, 0.3);
     transform: scale(1.1);
     transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -136,6 +146,7 @@
 }
 
 .team-modal__name {
+  color: white;
   text-align: center;
   margin-top: 10px;
 }
@@ -148,6 +159,7 @@
 
 .team-modal__link {
   width: 30px;
+  fill: var(--acent-modal);
 }
 
 .team-modal__title {

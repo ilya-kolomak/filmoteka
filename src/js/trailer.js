@@ -16,12 +16,12 @@ function createTrailerLink(el) {
 function drawModalForTrailler(id) {
   imageApiService
     .fetchVideo(id)
-    .then(response => response.json())
     .then(data => {
       const id = data.results[0].key;
       const instance = basicLightbox.create(`
 <iframe class="responsive" width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `);
+
       instance.show();
       modalClBtTrailer(instance);
     })

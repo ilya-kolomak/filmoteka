@@ -9,7 +9,7 @@
     "name": "Serhii<br>Artyshchuk",
     "role": "Developer",
     "git": "https://github.com/LachesisAsa",
-    "img": "https://avatars.githubusercontent.com/u/104760743?s=96&v=4"
+    "img": "https://avatars.githubusercontent.com/u/104760743?v=4"
   },
   {
     "name": "Tanya<br>Kuchak",
@@ -58,5 +58,11 @@
     "role": "Developer",
     "git": "https://github.com/IndieHippie",
     "img": "https://avatars.githubusercontent.com/u/106179464?v=4"
+  },
+  {
+    "name": "Michael<br>Trubitsyn",
+    "role": "Developer",
+    "git": "https://github.com/mitru0217",
+    "img": "https://avatars.githubusercontent.com/u/100318106?v=4"
   }
 ]

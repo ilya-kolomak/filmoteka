@@ -1,7 +1,5 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-// import ImageApiService from './mdApiService';
-import sprite from '../images/arrow.svg';
 
 const paginationContainer = document.querySelector('.tui-pagination');
 
@@ -33,16 +31,12 @@ const options = {
 };
 
 let pagination = null;
+
 const createPagination = () => {
   if (!pagination) {
     pagination = new Pagination(paginationContainer, options);
   }
   return pagination;
 };
-
-// const createPagination = () => {
-//   const pagination = new Pagination(paginationContainer, options);
-//   return pagination;
-// };
 
 export default createPagination;

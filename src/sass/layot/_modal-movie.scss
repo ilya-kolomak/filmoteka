@@ -353,6 +353,7 @@
 .about__movie--text--content {
   font-weight: 500;
   font-size: 12px;
+  color: black;
   line-height: 1.67;
 
   max-width: 390px;
@@ -365,7 +366,7 @@
 
 .modal__about--text--genre {
   @media screen and (max-width: 1023px) {
-    margin-left: 92px;
+    margin-left: 75px;
   }
 
   font-weight: 500;
